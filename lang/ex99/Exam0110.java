@@ -1,7 +1,7 @@
 package com.eomcs.lang.ex99;
 
 //# 콘솔로 출력하기
-//
+
 
 public class Exam0110 {
   public static void main(String[] args) {
