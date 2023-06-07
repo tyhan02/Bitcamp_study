@@ -42,6 +42,7 @@ public class App {
     System.out.println("4. 회원변경");
     System.out.println("5. 회원삭제");
     System.out.println("6. 종료");
+    ///
   }
 
   static void printTitle() {
