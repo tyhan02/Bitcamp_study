@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Iterator;
 
-// 도서관리
+
 class Book{
     private String num;   //도서번호
     private String title; //도서제목
