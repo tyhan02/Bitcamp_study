@@ -1,4 +1,4 @@
-package src.main.java.bitcamp.myapp;
+package bitcamp.myapp;
 
 // 소스 코드에서 Calculator 클래스는 bitcamp.util 패키지에 소속된 클래스를 가리킨다.
 import bitcamp.util.Calculator;
