@@ -1,4 +1,4 @@
-package bitcamp.myapp;
+package src.main.java.bitcamp.myapp;
 
 public class StudentSelector {
   public static void main(String[] args) throws Exception {

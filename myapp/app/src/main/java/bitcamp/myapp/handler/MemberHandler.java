@@ -1,4 +1,4 @@
-package bitcamp.myapp.handler;
+package src.main.java.bitcamp.myapp.handler;
 
 import bitcamp.util.Prompt;
 
