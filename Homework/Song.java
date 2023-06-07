@@ -8,7 +8,7 @@ class Song{
         ArrayList<Book> list=new ArrayList<>();
         loop:
         while(true){
-            System.out.println("1.도서추가 2.도서검색 3.도서삭제 4.도서수정 5.전체도서정보출력 6.종료"); //입출력
+            System.out.println("1.도서추가 2.도서검색 3.도서삭제 4.도서수정 5.전체도서정보출력 6.종료");
             int selec=sc.nextInt();
             switch(selec){
                 case 1: System.out.print("도서번호: ");
