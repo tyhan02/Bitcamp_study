@@ -27,6 +27,7 @@ public class MemberHandler {
         password[length] = util.Prompt.inputString("암호? ");
         gender[length] = inputGender((char)0);
 
+
         no[length] = userId++;
         length++;
     }
