@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-class Song{
+class Lib {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         ArrayList<Book> list=new ArrayList<>();
