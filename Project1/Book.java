@@ -8,6 +8,9 @@ class Book{
     private String title; //도서제목
     private String name;  //저자
     private String publi; //출판사
+
+
+
     public Book(String num,String title,String name,String publi){
         this.num=num;
         this.title=title;
