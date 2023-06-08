@@ -22,9 +22,9 @@ public class MemberHandler {
             return;
         }
 
-        name[length] = Prompt.inputString("이름? ");
-        email[length] = Prompt.inputString("이메일? ");
-        password[length] = Prompt.inputString("암호? ");
+        name[length] = util.Prompt.inputString("이름? ");
+        email[length] = util.Prompt.inputString("이메일? ");
+        password[length] = util.Prompt.inputString("암호? ");
         gender[length] = inputGender((char)0);
 
         no[length] = userId++;
@@ -44,7 +44,7 @@ public class MemberHandler {
     }
 
     public static void viewMember() {
-        String memberNo = Prompt.inputString("번호? ");
+        String memberNo =util.Prompt.inputString("번호? ");
         for (int i = 0; i < length; i++) {
             if (no[i] == Integer.parseInt(memberNo)) {
                 System.out.printf("이름: %s\n", name[i]);
@@ -61,15 +61,15 @@ public class MemberHandler {
     }
 
     public static void updateMember() {
-        String memberNo = Prompt.inputString("번호? ");
+        String memberNo = util.Prompt.inputString("번호? ");
         for (int i = 0; i < length; i++) {
             if (no[i] == Integer.parseInt(memberNo)) {
                 System.out.printf("이름(%s)? ", name[i]);
-                name[i] = Prompt.inputString("");
+                name[i] = util.Prompt.inputString("");
                 System.out.printf("이메일(%s)? ", email[i]);
-                email[i] = Prompt.inputString("");
+                email[i] = util.Prompt.inputString("");
                 System.out.printf("새암호? ");
-                password[i] = Prompt.inputString("");
+                password[i] = util.Prompt.inputString("");
                 gender[i] = inputGender(gender[i]);
                 return;
             }
@@ -85,7 +85,7 @@ public class MemberHandler {
             label = String.format("성별(%s)?\n", toGenderString(gender));
         }
         loop: while (true) {
-            String menuNo = Prompt.inputString(label +
+            String menuNo = util.Prompt.inputString(label +
                     "  1. 남자\n" +
                     "  2. 여자\n" +
                     "> ");
@@ -102,35 +102,45 @@ public class MemberHandler {
     }
 
     public static void deleteMember() {
-        String memberNo = Prompt.inputString("번호? ");
-        for (int i = 0; i < length; i++) {
-            if (no[i] == Integer.parseInt(memberNo)) {
-                for (int j = i; j < length - 1; j++) {
-                    no[j] = no[j + 1];
-                    name[j] = name[j + 1];
-                    email[j] = email[j + 1];
-                    password[j] = password[j + 1];
-                    gender[j] = gender[j + 1];
-                }
-                length--;
-                System.out.println("회원을 삭제하였습니다.");
-                return;
-            }
+        int memberNo = util.Prompt.inputInt("번호? ");
+
+        int deletedIndex = indexOf(memberNo);
+        if (deletedIndex == -1) {
+            System.out.println("해당 번호의 회원이 없습니다!");
+            return;
         }
 
-        System.out.println("해당 번호의 회원이 없습니다!");
+        for (int i = deletedIndex; i < length - 1; i++) {
+            no[i] = no[i + 1];
+            name[i] = name[i + 1];
+            email[i] = email[i + 1];
+            password[i] = password[i + 1];
+            gender[i] = gender[i + 1];
+        }
+
+        no[length - 1] = 0;
+        name[length - 1] = null;
+        email[length - 1] = null;
+        password[length - 1] = null;
+        gender[length - 1] = (char) 0;
+
+        length--;
     }
 
-
-
-
-
-
+    private static int indexOf(int memberNo) {
+        for (int i = 0; i < length; i++) {
+            if (no[i] == memberNo) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     private static boolean available() {
         return length < MAX_SIZE;
     }
 }
+
 
 
 //    public static void updateMember() {

@@ -2,6 +2,7 @@ import handler.MemberHandler;
 import util.Prompt;
 
 public class testin {
+
     public static void main(String[] args) {
 
         printTitle();
@@ -9,27 +10,27 @@ public class testin {
         printMenu();
 
         while (true) {
-            String menuNo = Prompt.inputString("메인> ");
+            String menuNo = util.Prompt.inputString("메인> ");
             if (menuNo.equals("6")) {
                 break;
             } else if (menuNo.equals("menu")) {
                 printMenu();
             } else if (menuNo.equals("1")) {
-                MemberHandler.inputMember();
+                handler.MemberHandler.inputMember();
             } else if (menuNo.equals("2")) {
-                MemberHandler.printMembers();
+                handler.MemberHandler.printMembers();
             } else if (menuNo.equals("3")) {
-                MemberHandler.viewMember();
+                handler.MemberHandler.viewMember();
             } else if (menuNo.equals("4")) {
-                MemberHandler.updateMember();
+                handler.MemberHandler.updateMember();
             } else if (menuNo.equals("5")) {
-                MemberHandler.deleteMember();
+                handler.MemberHandler.deleteMember();
             } else {
                 System.out.println(menuNo);
             }
         }
 
-        Prompt.close();
+        util.Prompt.close();
     }
 
     static void printMenu() {
@@ -47,7 +48,7 @@ public class testin {
     }
 
     static boolean promptContinue() {
-        String response = Prompt.inputString("계속 하시겠습니까?(Y/n) ");
+        String response = util.Prompt.inputString("계속 하시겠습니까?(Y/n) ");
         if (!response.equals("") && !response.equalsIgnoreCase("Y")) {
             return false;
         }
