@@ -10,14 +10,16 @@ public class Test {
 
         int result = 0;
 
-        result = 2 * 3;
-        result= result +7;
-        result = result -2;
-        result = result /2;
+        result = mul(2,3);
+        result= plus(result,7);
+        result = minus(result, 2);
+        result = div(result, 2);
 
         System.out.println(result);
 
     }
+
+
 
     static int plus(int a, int b){
         return a+b;
