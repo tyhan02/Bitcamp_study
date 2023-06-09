@@ -1,4 +1,4 @@
-package step01;
+package Test_0609.step01;
 // 1) 낱개의 변수 사용
 public class Test {
 

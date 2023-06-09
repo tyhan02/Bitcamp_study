@@ -1,4 +1,4 @@
-package step02;
+package Test_0609.step02;
 
 // 1) 낱개의 변수 사용
 // 2) 낱개의 변수 재사용

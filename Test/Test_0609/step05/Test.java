@@ -1,19 +1,21 @@
-package step04;
+package Test_0609.step05;
+
 // 1) 낱개의 변수 사용
 // 2) 낱개의 변수 재사용
 // 3) 배열 사용
-// 4) 클래스를 이용하여 데이터 타입 정의
+// 4) 클래스를 이용하여 데이터 타입 정의(중첩클래스; 로컬 클래스)
+// 5) 출력 기능을 별도의 메서드로 분리(중첩클래스; 스태틱 중첩 클래스)
 public class Test {
+    static class Score {
+        String name;
+        int kor;
+        int eng;
+        int math;
+        int sum;
+        float aver;
+    }
 
     public static void main(String[] args) {
-        class Score {
-            String name;
-            int kor;
-            int eng;
-            int math;
-            int sum;
-            float aver;
-        }
 
         final int MAX_SIZE = 10;
         Score[] scores = new Score[MAX_SIZE];
@@ -47,11 +49,14 @@ public class Test {
         scores[length++] = s;
 
         for (int i = 0; i < length; i++) {
-            s = scores[i];
-            System.out.printf("%s: 합계=%d, 평균=%.1f\n",
-                    s.name, s.sum, s.aver);
+            printScore(scores[i]);
         }
 
+    }
+
+    static void printScore(Score s) {
+        System.out.printf("%s: 합계=%d, 평균=%.1f\n",
+                s.name, s.sum, s.aver);
     }
 
 }
