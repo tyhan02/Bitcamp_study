@@ -14,29 +14,6 @@ package Test_0609.step12;
 // 11) 생성자 도입; 인스턴스 변수를 보다 쉽게 초기화 시키기
 // 12) 클래스를 유지보수 하기 쉽게 별도 소스 파일로 분리
 public class Test {
-    static class Score {
-        String name;
-        int kor;
-        int eng;
-        int math;
-        int sum;
-        float aver;
-
-        // 생성자
-        Score(String name, int kor, int eng, int math){
-            this.name =name;
-            this.kor= kor;
-            this.eng=eng;
-            this.math=math;
-            this.compute();
-        }
-
-        void compute() {
-            this.sum = this.kor + this.eng + this.math;
-            this.aver = this.sum / 3f;
-        }
-
-        }
 
     public static void main(String[] args) {
 
@@ -51,7 +28,6 @@ public class Test {
         scores[length++] = new Score("홍길동", 100, 100, 100);
         scores[length++] = new Score("임꺽정", 90, 90, 90);
         scores[length++] = new Score("유관순", 80, 80, 80);
-
 
         for (int i = 0; i < length; i++) {
             printScore(scores[i]);
