@@ -5,6 +5,7 @@ package step06;
 // 3) 배열 사용
 // 4) 클래스를 이용하여 데이터 타입 정의(중첩클래스; 로컬 클래스)
 // 5) 출력 기능을 별도의 메서드로 분리(중첩클래스; 스태틱 중첩 클래스)
+// 6) 합계 및 평균을 계산하는 기능을 메서드로 분리
 public class Test {
     static class Score {
         String name;
@@ -14,7 +15,6 @@ public class Test {
         int sum;
         float aver;
     }
-
     public static void main(String[] args) {
 
         final int MAX_SIZE = 10;
@@ -52,6 +52,11 @@ public class Test {
             printScore(scores[i]);
         }
 
+    }
+
+    static void compute(Score s){
+        s.sum = s.kor + s.eng + s.math;
+        s.aver = s.sum / 3f;
     }
 
     static void printScore(Score s) {
