@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Iterator;
-
 class Book{
     private String num;   //도서번호
     private String title; //도서제목
