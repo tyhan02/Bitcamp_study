@@ -1,6 +1,5 @@
 package App1_9;
 
-// 소스 코드에서 Calculator 클래스는 bitcamp.util 패키지에 소속된 클래스를 가리킨다.
 import util.Calculator;
 public class Test {
     public static void main(String[] args) {

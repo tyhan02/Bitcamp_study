@@ -1,6 +1,5 @@
 package util;
 
-//
 public class Calculator {
 
     public static int result = 0;
