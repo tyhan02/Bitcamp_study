@@ -1,7 +1,6 @@
-package Test_0609.step14;
+package Test_0609.step15;
 
-import Test_0609.step14.vo.Score;// 1) 낱개의 변수 사용
-// 2) 낱개의 변수 재사용
+import Test_0609.step15.vo.Score;// 2) 낱개의 변수 재사용
 // 3) 배열 사용
 // 4) 클래스를 이용하여 데이터 타입 정의(중첩클래스; 로컬 클래스)
 // 5) 출력 기능을 별도의 메서드로 분리(중첩클래스; 스태틱 중첩 클래스)
@@ -15,6 +14,7 @@ import Test_0609.step14.vo.Score;// 1) 낱개의 변수 사용
 // 12) 클래스를 유지보수 하기 쉽게 별도 소스 파일로 분리
 // 13) 클래스를 유지보수 하기 쉽게 패키지로 분류: import, public
 // 14) 외부접근 차단과 값 꺼내기 private, getter
+// 15) 프로그래밍이 일관성을 위해 보통 다른 필드에 대해서도 getter를 만들고 사용
 
 public class Test {
 
@@ -41,6 +41,6 @@ public class Test {
     }
     static void printScore(Score s) {
         System.out.printf("%s: 합계=%d, 평균=%.1f\n",
-                s.name, s.getSum(), s.getAver());
+                s.getName(), s.getSum(), s.getAver());
     }
 }
