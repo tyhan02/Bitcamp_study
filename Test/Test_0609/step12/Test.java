@@ -1,4 +1,4 @@
-package Test_0609.step11;
+package Test_0609.step12;
 
 // 1) 낱개의 변수 사용
 // 2) 낱개의 변수 재사용
@@ -12,6 +12,7 @@ package Test_0609.step11;
 // 10) GRASP 패턴: Information Experts
 //      -createScore()를 score 클래스로 이동
 // 11) 생성자 도입; 인스턴스 변수를 보다 쉽게 초기화 시키기
+// 12) 클래스를 유지보수 하기 쉽게 별도 소스 파일로 분리
 public class Test {
     static class Score {
         String name;
@@ -50,6 +51,7 @@ public class Test {
         scores[length++] = new Score("홍길동", 100, 100, 100);
         scores[length++] = new Score("임꺽정", 90, 90, 90);
         scores[length++] = new Score("유관순", 80, 80, 80);
+
 
         for (int i = 0; i < length; i++) {
             printScore(scores[i]);
