@@ -2,7 +2,8 @@ package util;
 
 //
 public class Calculator {
-    public static int result; // 스태틱 변수는 기본 값 0으로 초기화된다.
+
+    public static int result = 0;
 
     public static void init(int a) {
         result = a;
