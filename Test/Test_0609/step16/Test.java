@@ -14,7 +14,7 @@ import Test_0609.step16.vo.Score;// 3) 배열 사용
 // 13) 클래스를 유지보수 하기 쉽게 패키지로 분류: import, public
 // 14) 외부접근 차단과 값 꺼내기 private, getter
 // 15) 프로그래밍이 일관성을 위해 보통 다른 필드에 대해서도 getter를 만들고 사용
-// 16) setter가 필요한 이유
+// 16) 필드에 직접 접근을 막고, setter가 필요한 이유
 
 public class Test {
 
