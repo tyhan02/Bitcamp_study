@@ -35,8 +35,8 @@ public class Test {
 
 
         //scores[0].kor = 7000; 접근 불가
+        scores[0].setKor(7000); //setter 을 통해서는 값 변경 가능, 단 유효한 값만 가능
 
-        scores[0].compute(); // 호출하지 않으면 아무 소용이 없어져 버림
 
         // 변수에 직접 접근하여, 국영수 합계를 임의로 조작 가능하다
         //scores[0].sum = 20000;
