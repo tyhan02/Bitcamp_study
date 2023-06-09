@@ -15,10 +15,9 @@ package Test_0609.step17.vo;
 
      public Score(String name, int kor, int eng, int math) {
             this.name = name;
-            this.kor = kor;
-            this.eng = eng;
-            this.math = math;
-            this.compute();
+            this.setKor(kor);
+            this.setEng(eng);
+            this.setMath(math);
         }
 
      public void compute() {
@@ -47,6 +46,7 @@ package Test_0609.step17.vo;
              return;
          }
          this.kor =kor;
+         this.compute();
      }
      public int getEng(){
          return this.eng;
@@ -57,9 +57,11 @@ package Test_0609.step17.vo;
              return;
          }
          this.eng =eng;
+         this.compute();
      }
      public int getMath(){
          return this.math;
+
      }
 
      public void setMath(int math){
@@ -67,6 +69,7 @@ package Test_0609.step17.vo;
              return;
          }
          this.math =math;
+         this.compute();
      }
  }
 
