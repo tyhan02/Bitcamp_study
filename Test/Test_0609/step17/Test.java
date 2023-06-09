@@ -1,7 +1,6 @@
-package Test_0609.step16;
+package Test_0609.step17;
 
-import Test_0609.step16.vo.Score;// 3) 배열 사용
-// 4) 클래스를 이용하여 데이터 타입 정의(중첩클래스; 로컬 클래스)
+import Test_0609.step17.vo.Score;// 4) 클래스를 이용하여 데이터 타입 정의(중첩클래스; 로컬 클래스)
 // 5) 출력 기능을 별도의 메서드로 분리(중첩클래스; 스태틱 중첩 클래스)
 // 6) 합계 및 평균을 계산하는 기능을 메서드로 분리
 // 7) GRASP 패턴: Information Experts(정보를 가지고 있는 클래스가 그 정보를 다뤄야 한다)
@@ -15,7 +14,8 @@ import Test_0609.step16.vo.Score;// 3) 배열 사용
 // 14) 외부접근 차단과 값 꺼내기 private, getter
 // 15) 프로그래밍이 일관성을 위해 보통 다른 필드에 대해서도 getter를 만들고 사용
 // 16) 필드에 직접 접근을 막고, setter를 정의하는 이유
-
+// 17) 필드의 직접 접근을 막기: 인스턴스 변수에 무효한 값이 저장되지 않게 하기 위해
+//      => getter정의
 public class Test {
 
     public static void main(String[] args) {
