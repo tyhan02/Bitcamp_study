@@ -19,8 +19,6 @@ public class Test {
 
     }
 
-
-
     static int plus(int a, int b){
         return a+b;
     }
