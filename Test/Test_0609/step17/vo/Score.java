@@ -42,11 +42,31 @@ package Test_0609.step17.vo;
      public int getKor(){
          return this.kor;
      }
+     public void setKor(int kor){
+         if(kor <0 || kor>100){
+             return;
+         }
+         this.kor =kor;
+     }
      public int getEng(){
          return this.eng;
      }
+
+     public void setEng(int eng){
+         if(eng <0 || eng>100){
+             return;
+         }
+         this.eng =eng;
+     }
      public int getMath(){
          return this.math;
+     }
+
+     public void setMath(int math){
+         if(math <0 || math>100){
+             return;
+         }
+         this.math =math;
      }
  }
 
