@@ -3,6 +3,10 @@ package util;
 public class Calculator {
 
     public static int result = 0;
+
+    public static int getResult(){
+        return result;
+    }
     public static void init(int a) {
         result = a;
     }
