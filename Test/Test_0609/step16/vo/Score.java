@@ -1,10 +1,10 @@
-package Test_0609.step15.vo;
+package Test_0609.step16.vo;
 
  public class Score {
      private String name;
-      int kor;
-      int eng;
-      int math;
+     private int kor;
+     private int eng;
+     private int math;
      private int sum;
      private float aver;
 
