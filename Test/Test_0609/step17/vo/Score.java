@@ -1,7 +1,12 @@
 package Test_0609.step17.vo;
 
  public class Score {
+
+     // 프로그래밍의 일관성을 위해 그냥 막아버린게 name
      private String name;
+
+     // 직접 접근을 허용했을 때 무효한 값을 저장 할 수 있기 때문에
+     // private로 접근을 막았다
      private int kor;
      private int eng;
      private int math;
@@ -32,6 +37,16 @@ package Test_0609.step17.vo;
 
      public String getName(){
          return this.name;
+     }
+
+     public int getKor(){
+         return this.kor;
+     }
+     public int getEng(){
+         return this.eng;
+     }
+     public int getMath(){
+         return this.math;
      }
  }
 
