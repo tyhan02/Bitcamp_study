@@ -2,9 +2,9 @@ package Test_0609.step16.vo;
 
  public class Score {
      private String name;
-     private int kor;
-     private int eng;
-     private int math;
+     public int kor;
+     public int eng;
+     public int math;
      private int sum;
      private float aver;
 

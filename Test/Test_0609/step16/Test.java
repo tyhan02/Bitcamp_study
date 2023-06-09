@@ -14,7 +14,7 @@ import Test_0609.step16.vo.Score;// 3) 배열 사용
 // 13) 클래스를 유지보수 하기 쉽게 패키지로 분류: import, public
 // 14) 외부접근 차단과 값 꺼내기 private, getter
 // 15) 프로그래밍이 일관성을 위해 보통 다른 필드에 대해서도 getter를 만들고 사용
-// 16) 필드에 직접 접근을 막고, setter가 필요한 이유
+// 16) 필드에 직접 접근을 막고, setter를 정의하는 이유
 
 public class Test {
 
@@ -32,7 +32,10 @@ public class Test {
         scores[length++] = new Score("임꺽정", 90, 90, 90);
         scores[length++] = new Score("유관순", 80, 80, 80);
 
-        // 국어 점수 변경하기
+        // 합계와 평균 계산이 끝난 후에 국어 점수를 변경한다면?
+        // => 국영수 점수와 합계, 평균 점수가 일치하지 않는 문제가 발생
+        // 데이터에 결함이 발생
+        scores[0].kor = 70;
 
 
 
@@ -44,7 +47,7 @@ public class Test {
         }
     }
     static void printScore(Score s) {
-        System.out.printf("%s: 합계=%d, 평균=%.1f\n",
-                s.getName(), s.getSum(), s.getAver());
+        System.out.printf("%s: 국어=%d, 영어=%d, 수학=%d, 합계=%d, 평균=%.1f\n",
+                s.getName(),s.kor, s.eng, s.math, s.getSum(), s.getAver());
     }
 }
