@@ -30,7 +30,7 @@ public class Test {
         // => 생성한 후 String, int, int, int 파라미터 값을 받는 생성자를 호출하기
         // => 이렇게 초기화 시킨 인스턴스의 주소 리턴하기
         scores[length++] = new Score("홍길동", 100, 100, 100);
-        scores[length++] = new Score("임꺽정", 90, 90, 90);
+        scores[length++] = new Score("임꺽정", 90, 800, 90);
         scores[length++] = new Score("유관순", 80, 80, 80);
 
 

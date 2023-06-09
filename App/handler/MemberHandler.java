@@ -6,7 +6,6 @@ import handler.Member;
 
 
 public class MemberHandler {
-
     static final int MAX_SIZE = 100;
     static Member[] members = new Member[MAX_SIZE];
     static int userId = 1;
