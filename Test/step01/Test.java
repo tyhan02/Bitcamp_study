@@ -1,6 +1,6 @@
-package App1_9;
+package step01;
 
-public class Test1 {
+public class Test {
 
     public static void main(String[] arg){
         String name;
