@@ -5,6 +5,12 @@ public class Member {
 
     private  static int userId=1;
 
+    //GRASP 패턴: information Expert
+    // => 정보를 다룰 때는 그 정보를 갖고 있는 클래스에 그 기능을 둔다
+    // => 필드도 마찬가지
+    public static final char MALE = 'M';
+    public static final char FEMALE = 'W';
+
     private int no;
     private String name;
     private String email;
