@@ -1,8 +1,6 @@
 package handler;
 
 import util.Prompt;
-import handler.Member;
-
 
 
 public class MemberHandler {
@@ -21,11 +19,11 @@ public class MemberHandler {
         }
 
         Member m = new Member();
-        m.setName() = Prompt.inputString("이름? ");
-        m.setEmail() = Prompt.inputString("이메일? ");
-        m.setPassword() = Prompt.inputString("암호? ");
-        m.setGender() = inputGender((char)0);
-        m.setNo() = userId++;
+        m.getName(Prompt.inputString("이름?"));
+        m.setEmail(Prompt.inputString("이메일? "));
+        m.setPassword(Prompt.inputString("암호? "));
+        m.setGender(inputGender((char)0));
+        m.setNo(userId++);
 
         // 위에서 만든 Member 인스턴스의 주소를 잃어버리지 않게
         // 레퍼런스 배열에 담는다.
@@ -40,7 +38,7 @@ public class MemberHandler {
         for (int i = 0; i < length; i++) {
             Member m = members[i];
             System.out.printf("%d, %s, %s, %s\n",
-                    m.getNo(), m.getName(), m.getEmail(),
+                    m.getNo(), m.getName(Prompt.inputString("이름?")), m.getEmail(),
                     toGenderString(m.getGender()));
         }
     }
@@ -50,7 +48,7 @@ public class MemberHandler {
         for (int i = 0; i < length; i++) {
             Member m = members[i];
             if (m.getNo() == Integer.parseInt(memberNo)) {
-                System.out.printf("이름: %s\n", m.getName());
+                System.out.printf("이름: %s\n", m.getName(Prompt.inputString("이름?")));
                 System.out.printf("이메일: %s\n", m.getEmail());
                 System.out.printf("성별: %s\n", toGenderString(m.getGender()));
                 return;
@@ -68,7 +66,7 @@ public class MemberHandler {
         for (int i = 0; i < length; i++) {
             Member m = members[i];
             if (m.getNo() == Integer.parseInt(memberNo)) {
-                System.out.printf("이름(%s)? ", m.getName());
+                System.out.printf("이름(%s)? ", m.getName(Prompt.inputString("이름?")));
                 m.setName(Prompt.inputString(""));
                 System.out.printf("이메일(%s)? ", m.getEmail());
                 m.setEmail(Prompt.inputString(""));

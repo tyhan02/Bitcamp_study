@@ -15,7 +15,7 @@ public class Member {
         this.no =no;
     }
 
-    public String getName(){
+    public String getName(String s){
         return name;
     }
     public void setName(String name){
