@@ -158,9 +158,3 @@ https://meet.google.com/sya-jckw-ivq
     - 개인별 github.com 의 bitcamp-study 저장소 주소 제출
       - 이름, url
     - to: jinyoung.eom@gmail.com
-
-
-
-## 구글 미트 접속
-
-https://meet.google.com/sya-jckw-ivq
