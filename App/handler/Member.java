@@ -30,6 +30,8 @@ public class Member {
         this.no = userId++;
     }
 
+    // getter / setter는 인스턴스 필드의 값을 설정하고 꺼내는 메서드
+    //보통 외부에서 직접 필드에 접근하는 것을 막을 때 사용
     public int getNo(){
         return no;
     }
