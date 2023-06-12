@@ -1,12 +1,19 @@
 package handler;
 
+
 public class Member {
+
+    private  static int userId=1;
 
     private int no;
     private String name;
     private String email;
     private String password;
     private char gender;
+
+    public Member(){
+        this.no = userId++;
+    }
 
     public int getNo(){
         return no;
