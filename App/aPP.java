@@ -1,7 +1,4 @@
-import handler.MemberHandler;
-import util.Prompt;
-
-public class testin {
+public class aPP {
 
     public static void main(String[] args) {
 
