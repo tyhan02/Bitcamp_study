@@ -13,7 +13,7 @@ public class Exam0150 {
     // 인스턴스 필드 = 논스태틱 필드
     // - 인스턴스마다 개별적으로 관리해야 할 값은 인스턴스 변수에 저장한다.
     String name;
-    int age;
+    int age; //얘네는 new라는 연산자 나올때
   }
 
   public static void main(String[] args) {
