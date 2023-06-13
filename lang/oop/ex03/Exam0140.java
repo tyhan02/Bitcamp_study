@@ -1,5 +1,5 @@
 // # 클래스 변수와 인스턴스 변수 생성 시점과 메모리 영역
-//
+
 package com.eomcs.oop.ex03;
 
 public class Exam0140 {
@@ -16,7 +16,6 @@ public class Exam0140 {
     // - 클래스 변수나 클래스 메서드를 사용할 때
     // - 인스턴스를 생성할 때
     // - 단 중복 로딩되지 않는다.
-    //
     A.v1 = 100;
 
     // v2 는 인스턴스 변수이기 때문에 사용하기 전에 new 명령으로 먼저 생성해야 한다.
@@ -40,5 +39,3 @@ public class Exam0140 {
     System.out.printf("A.v1=%d, p.v2=%d, p2.v2=%d\n", A.v1, p.v2, p2.v2);
   }
 }
-
-
