@@ -1,24 +1,38 @@
 package util;
 
 
+import java.io.InputStream;
 import java.util.Objects;
 import java.util.Scanner;
 
+
+
 public class Prompt {
 
-    static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
-    public static String inputString(String title, Object... args) {
-        System.out.printf(title, args);
-        return scanner.nextLine();
+    //default constructor 정의
+    public Prompt(){
+
+        scanner = new Scanner(System.in);
+    }
+    // 다른 입력 도구와 연결한다면
+    public Prompt(InputStream in) {
+        scanner = new Scanner(in);
+
     }
 
-    public static int inputInt(String title, Object... args) {
+    public String inputString(String title, Object... args) {
+        System.out.printf(title, args);
+        return this.scanner.nextLine();
+    }
+
+    public int inputInt(String title, Object... args) {
         return Integer.parseInt(inputString(title));
     }
 
-    public static void close() {
-        scanner.close();
+    public void close() {
+        this.scanner.close();
     }
 
 }
