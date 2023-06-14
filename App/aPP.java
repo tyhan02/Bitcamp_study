@@ -58,7 +58,7 @@ public class aPP {
                 readingHandler.deleteBoard();
             }
             else {
-                System.out.println(menuNo);
+                System.out.println("메뉴 번호가 옳지 않아 ");
             }
         }
 
