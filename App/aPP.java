@@ -1,10 +1,18 @@
+import handler.BoardHandler;
+
 public class aPP {
 
     public static void main(String[] args) {
 
+
+        BoardHandler boardHandler = new BoardHandler();
+        BoardHandler readingHandler = new BoardHandler();
+
         printTitle();
 
         printMenu();
+
+
 
         while (true) {
             String menuNo = util.Prompt.inputString("메인> ");
@@ -32,7 +40,18 @@ public class aPP {
                 handler.BoardHandler.updateBoard();
             } else if (menuNo.equals("10")) {
                 handler.BoardHandler.deleteBoard();
-            } else {
+            } else if (menuNo.equals("11")) {
+                handler.readingHandler.inputBoard();
+            } else if (menuNo.equals("12")) {
+                handler.readingHandler.printBoard();
+            } else if (menuNo.equals("13")) {
+                handler.readingHandler.viewBoard();
+            } else if (menuNo.equals("14")) {
+                handler.readingHandler.updateBoard();
+            } else if (menuNo.equals("15")) {
+                handler.readingHandler.deleteBoard();
+            }
+            else {
                 System.out.println(menuNo);
             }
         }
@@ -41,16 +60,21 @@ public class aPP {
     }
 
     static void printMenu() {
-        System.out.println("1. 회원등록");
-        System.out.println("2. 회원목록");
-        System.out.println("3. 회원조회");
-        System.out.println("4. 회원변경");
-        System.out.println("5. 회원삭제");
-        System.out.println("6. 게시글등록");
-        System.out.println("7. 게시글목록");
-        System.out.println("8. 게시글조회");
-        System.out.println("9. 게시글변경");
+        System.out.println("1. 회원 등록");
+        System.out.println("2. 회원 목록");
+        System.out.println("3. 회원 조회");
+        System.out.println("4. 회원 변경");
+        System.out.println("5. 회원 삭제");
+        System.out.println("6. 게시글 등록");
+        System.out.println("7. 게시글 목록");
+        System.out.println("8. 게시글 조회");
+        System.out.println("9. 게시글 변경");
         System.out.println("10. 게시글삭제");
+        System.out.println("11. 독서록 등록");
+        System.out.println("12. 독서록 목록");
+        System.out.println("13. 독서록 조회");
+        System.out.println("14. 독서록 변경");
+        System.out.println("15. 독서록 삭제");
         System.out.println("99. 종료");
     }
 
