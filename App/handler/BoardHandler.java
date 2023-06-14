@@ -114,7 +114,7 @@ public class BoardHandler {
         return -1;
     }
 
-    private static boolean available() {
+    private boolean available() {
         return this.length < MAX_SIZE;
     }
 
