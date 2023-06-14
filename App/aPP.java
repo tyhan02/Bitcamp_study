@@ -1,13 +1,18 @@
 import handler.BoardHandler;
 import handler.MemberHandler;
+import util.Prompt;
 
 public class aPP {
 
     public static void main(String[] args) {
 
-        MemberHandler memberHandler = new MemberHandler();
-        BoardHandler boardHandler = new BoardHandler();
-        BoardHandler readingHandler = new BoardHandler();
+        Prompt prompt = new Prompt();
+        MemberHandler memberHandler = new MemberHandler(prompt);
+        BoardHandler boardHandler = new BoardHandler(prompt);
+        BoardHandler readingHandler = new BoardHandler(prompt);
+
+        //기본 생성자를 이용해 Prompt 인스턴스를 준비
+        // 기본 생성자는 Scanner을 키보드와 연결
 
         printTitle();
 
@@ -16,7 +21,7 @@ public class aPP {
 
 
         while (true) {
-            String menuNo = util.Prompt.inputString("메인> ");
+            String menuNo = prompt.inputString("메인> ");
             if (menuNo.equals("99")) {
                 break;
             } else if (menuNo.equals("menu")) {
@@ -57,7 +62,7 @@ public class aPP {
             }
         }
 
-        util.Prompt.close();
+        prompt.close();
     }
 
     static void printMenu() {

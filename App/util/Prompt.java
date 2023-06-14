@@ -18,7 +18,7 @@ public class Prompt {
     }
     // 다른 입력 도구와 연결한다면
     public Prompt(InputStream in) {
-        scanner = new Scanner(in);
+        this.scanner = new Scanner(in);
 
     }
 
@@ -28,7 +28,8 @@ public class Prompt {
     }
 
     public int inputInt(String title, Object... args) {
-        return Integer.parseInt(inputString(title));
+
+        return Integer.parseInt(inputString(title, args));
     }
 
     public void close() {

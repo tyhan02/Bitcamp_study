@@ -7,11 +7,20 @@ import java.util.Date;
 
 
 public class BoardHandler {
+    private Prompt prompt;
     // 인스턴스에 상관없이 공통으로 사용하는 필드라면 스태틱 필드로 선언
     private static final int MAX_SIZE = 100;
     //인스턴스 마다 별개로 관리해야 하는 데이터라면 논스태틱 필드(인스턴스 필드)로 선언한다
     private Board[] boards = new Board[MAX_SIZE];
     private int length = 0;
+
+
+    public BoardHandler(Prompt prompt){
+
+        this.prompt=prompt;
+
+    }
+
 
 
     //인스턴스 멤버(필드나 메서드)를 사용하는 경우 인스턴스 메서드로 정의해야한다
@@ -22,10 +31,10 @@ public class BoardHandler {
         }
 
         Board board = new Board();
-        board.setTitle(Prompt.inputString("제목?"));
-        board.setContent(Prompt.inputString("글 내용? "));
-        board.setWriter(Prompt.inputString("작성자? "));
-        board.setPassword(Prompt.inputString("암호? "));
+        board.setTitle(this.prompt.inputString("제목?"));
+        board.setContent(this.prompt.inputString("글 내용? "));
+        board.setWriter(this.prompt.inputString("작성자? "));
+        board.setPassword(this.prompt.inputString("암호? "));
         
         this.boards[this.length++] = board;
     }
@@ -53,7 +62,7 @@ public class BoardHandler {
 
 
     public void viewBoard() {
-        String boardNo = Prompt.inputString("번호? ");
+        String boardNo = this.prompt.inputString("번호? ");
         for (int i = 0; i < this.length; i++) {
             Board board = this.boards[i];
             if (board.getNo() == Integer.parseInt(boardNo)) {
@@ -72,17 +81,17 @@ public class BoardHandler {
     
 
     public void updateBoard() {
-        String boardNo = Prompt.inputString("번호? ");
+        String boardNo = this.prompt.inputString("번호? ");
         for (int i = 0; i < this.length; i++) {
             Board board = this.boards[i];
             if (board.getNo() == Integer.parseInt(boardNo)) {
-                if(!Prompt.inputString("암호?").equals(board.getPassword())){
+                if(!this.prompt.inputString("암호?").equals(board.getPassword())){
                     System.out.println("암호 틀렸어 돌아가 안돼 안열어줘");
                     return;
                 }
 
-                board.setTitle(Prompt.inputString("제목(%s)? ", board.getTitle()));
-                board.setContent(Prompt.inputString("글 내용(%s)? ", board.getContent()));
+                board.setTitle(this.prompt.inputString("제목(%s)? ", board.getTitle()));
+                board.setContent(this.prompt.inputString("글 내용(%s)? ", board.getContent()));
                 return;
             }
         }
@@ -91,7 +100,7 @@ public class BoardHandler {
     
 
     public void deleteBoard() {
-        int deletedIndex = indexOf(Prompt.inputInt("번호? ")); //replace temp with query
+        int deletedIndex = indexOf(this.prompt.inputInt("번호? ")); //replace temp with query
         if (deletedIndex == -1) {
             System.out.println("해당 번호의 게시글이 없습니다!");
             return;
