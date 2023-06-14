@@ -89,9 +89,7 @@ public class BoardHandler {
     
 
     public static void deleteBoard() {
-        int boardNo = Prompt.inputInt("번호? ");
-
-        int deletedIndex = indexOf(boardNo);
+        int deletedIndex = indexOf(Prompt.inputInt("번호? ")); //replace temp with query
         if (deletedIndex == -1) {
             System.out.println("해당 번호의 게시글이 없습니다!");
             return;
