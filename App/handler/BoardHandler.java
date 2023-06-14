@@ -60,6 +60,7 @@ public class BoardHandler {
                 System.out.printf("작성자: %s\n", board.getWriter());
                 System.out.printf("조회수: %s\n", board.getViewCount());
                 System.out.printf("등록일: %tY-%1$tm-%1$td\n", board.getCreatedDate());
+                board.setViewCount(board.getViewCount() +1);
 
                 return;
             }
@@ -73,12 +74,14 @@ public class BoardHandler {
         for (int i = 0; i < length; i++) {
             Board board = boards[i];
             if (board.getNo() == Integer.parseInt(boardNo)) {
-                System.out.printf("이름(%s)? ", board.getTitle());
-                board.setTitle(Prompt.inputString(""));
-                System.out.printf("작성자(%s)? ", board.getWriter());
-                board.setWriter(Prompt.inputString(""));
-                System.out.printf("새암호? ");
-                board.setPassword(Prompt.inputString(""));
+                String password = Prompt.inputString("암호?");
+                if(!password.equals(board.getPassword())){
+                    System.out.println("암호 틀렸어 돌아가 안돼 안열어줘");
+                    return;
+                }
+
+                board.setTitle(Prompt.inputString("제목(%s)? ", board.getTitle()));
+                board.setContent(Prompt.inputString("글 내용(%s)? ", board.getContent()));
                 return;
             }
         }
