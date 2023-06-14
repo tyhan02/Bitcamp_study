@@ -1,10 +1,11 @@
 import handler.BoardHandler;
+import handler.MemberHandler;
 
 public class aPP {
 
     public static void main(String[] args) {
 
-
+        MemberHandler memberHandler = new MemberHandler();
         BoardHandler boardHandler = new BoardHandler();
         BoardHandler readingHandler = new BoardHandler();
 
@@ -21,35 +22,35 @@ public class aPP {
             } else if (menuNo.equals("menu")) {
                 printMenu();
             } else if (menuNo.equals("1")) {
-                handler.MemberHandler.inputMember();
+                memberHandler.inputMember();
             } else if (menuNo.equals("2")) {
-                handler.MemberHandler.printMembers();
+               memberHandler.printMembers();
             } else if (menuNo.equals("3")) {
-                handler.MemberHandler.viewMember();
+                memberHandler.viewMember();
             } else if (menuNo.equals("4")) {
-                handler.MemberHandler.updateMember();
+               memberHandler.updateMember();
             } else if (menuNo.equals("5")) {
-                handler.MemberHandler.deleteMember();
+                memberHandler.deleteMember();
             } else if (menuNo.equals("6")) {
-                handler.BoardHandler.inputBoard();
+                boardHandler.inputBoard();
             } else if (menuNo.equals("7")) {
-                handler.BoardHandler.printBoard();
+                boardHandler.printBoard();
             } else if (menuNo.equals("8")) {
-                handler.BoardHandler.viewBoard();
+                boardHandler.viewBoard();
             } else if (menuNo.equals("9")) {
-                handler.BoardHandler.updateBoard();
+                boardHandler.updateBoard();
             } else if (menuNo.equals("10")) {
-                handler.BoardHandler.deleteBoard();
+               boardHandler.deleteBoard();
             } else if (menuNo.equals("11")) {
-                handler.readingHandler.inputBoard();
+               readingHandler.inputBoard();
             } else if (menuNo.equals("12")) {
-                handler.readingHandler.printBoard();
+               readingHandler.printBoard();
             } else if (menuNo.equals("13")) {
-                handler.readingHandler.viewBoard();
+               readingHandler.viewBoard();
             } else if (menuNo.equals("14")) {
-                handler.readingHandler.updateBoard();
+                readingHandler.updateBoard();
             } else if (menuNo.equals("15")) {
-                handler.readingHandler.deleteBoard();
+                readingHandler.deleteBoard();
             }
             else {
                 System.out.println(menuNo);
