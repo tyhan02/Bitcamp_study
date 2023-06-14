@@ -74,8 +74,7 @@ public class BoardHandler {
         for (int i = 0; i < length; i++) {
             Board board = boards[i];
             if (board.getNo() == Integer.parseInt(boardNo)) {
-                String password = Prompt.inputString("암호?");
-                if(!password.equals(board.getPassword())){
+                if(!Prompt.inputString("암호?").equals(board.getPassword())){
                     System.out.println("암호 틀렸어 돌아가 안돼 안열어줘");
                     return;
                 }
