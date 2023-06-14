@@ -4,11 +4,14 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/myapp/app" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/myapp/app-01" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/App" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Project" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW_Project" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW_project_renew" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Test/Test_0607" />
+      <excludeFolder url="file://$MODULE_DIR$/lang" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/app-01" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
