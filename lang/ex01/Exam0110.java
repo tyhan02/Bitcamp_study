@@ -14,6 +14,3 @@ class Exam0110 {}
 //
 //2) 생성된 클래스 파일 확인하기
 //- bin/main/com/eomcs/lang/ex01 디렉토리에 Exam0110.class 파일이 생성된다
-//
-
-

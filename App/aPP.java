@@ -6,19 +6,19 @@ public class aPP {
 
     public static void main(String[] args) {
 
+        // 기본 생성자를 이용해 Prompt 인스턴스를 준비한다.
+        // => 기본 생성자는 Scanner를 키보드와 연결한다. OK
         Prompt prompt = new Prompt();
-        MemberHandler memberHandler = new MemberHandler(prompt);
-        BoardHandler boardHandler = new BoardHandler(prompt);
-        BoardHandler readingHandler = new BoardHandler(prompt);
 
-        //기본 생성자를 이용해 Prompt 인스턴스를 준비
-        // 기본 생성자는 Scanner을 키보드와 연결
+        // 모든 핸들러는 Handler 규칙에 따라 정의되었기 때문에
+        // Handler 레퍼런스에 그 주소를 담을 수 있다.
+        Handler memberHandler = new MemberHandler(prompt, "회원");
+        Handler boardHandler = new BoardHandler(prompt, "게시글");
+        Handler readingHandler = new BoardHandler(prompt, "독서록");
 
         printTitle();
 
         printMenu();
-
-
 
         while (true) {
             String menuNo = prompt.inputString("메인> ");
@@ -29,12 +29,11 @@ public class aPP {
             } else if (menuNo.equals("1")) {
                 memberHandler.execute();
             } else if (menuNo.equals("2")) {
-              // memberHandler.printMembers();
+                boardHandler.execute();
             } else if (menuNo.equals("3")) {
-                //memberHandler.viewMember();
-            }
-            else {
-                System.out.println("메뉴 번호가 옳지 않아 ");
+                readingHandler.execute();
+            } else {
+                System.out.println("메뉴 번호가 옳지 않습니다!");
             }
         }
 
@@ -52,5 +51,4 @@ public class aPP {
         System.out.println("나의 목록 관리 시스템");
         System.out.println("----------------------------------");
     }
-
 }
