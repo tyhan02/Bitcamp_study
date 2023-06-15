@@ -20,6 +20,42 @@ public class MemberHandler {
 
     }
 
+    public void execute(){
+
+        printMenu();
+
+        while (true) {
+            String menuNo = prompt.inputString("회원> ");
+            if (menuNo.equals("0")) {
+                return;
+            } else if (menuNo.equals("menu")) {
+                printMenu();
+            } else if (menuNo.equals("1")) {
+                //memberHandler.inputMember();
+            } else if (menuNo.equals("2")) {
+                // memberHandler.printMembers();
+            } else if (menuNo.equals("3")) {
+                //memberHandler.viewMember();
+            } else if (menuNo.equals("4")) {
+                //memberHandler.viewMember();
+            } else if (menuNo.equals("5")) {
+                //memberHandler.viewMember();
+            } else {
+                System.out.println("메뉴 번호가 옳지 않아 ");
+            }
+        }
+
+    }
+    private static void printMenu(){
+
+        System.out.println("1. 등록");
+        System.out.println("2. 목록");
+        System.out.println("3. 조회");
+        System.out.println("4. 변경");
+        System.out.println("5. 삭제");
+        System.out.println("0. 메인");
+
+    }
 
     public void inputMember() {
         if (!this.available()) {
