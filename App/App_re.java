@@ -1,8 +1,9 @@
 import handler.BoardHandler;
+import handler.Handler;
 import handler.MemberHandler;
 import util.Prompt;
 
-public class aPP {
+public class App_re {
 
     public static void main(String[] args) {
 

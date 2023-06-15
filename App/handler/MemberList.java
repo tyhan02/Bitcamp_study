@@ -6,7 +6,7 @@ public class MemberList {
     private Member[] members = new Member[MAX_SIZE];
     private int length;
 
-    public boolean add(Memeber m){
+    public boolean add(Member m){
         if(!available()){
             return false;
         }
@@ -15,7 +15,7 @@ public class MemberList {
     }
 
     public Member[] list(){
-        Member[] arr = new Member[this.legnth];
+        Member[] arr = new Member[this.length];
 
         for (int i = 0; i < this.length; i++) {
             arr[i] = this.members[i];
