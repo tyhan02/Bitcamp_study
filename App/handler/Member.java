@@ -32,6 +32,38 @@ public class Member {
 
     // 겟터/셋터는 인스턴스 필드의 값을 설정하고 꺼내는 메서드다.
     // 보통 외부에서 직접 필드에 접근하는 것을 막았을 때 사용한다.
+
+    public boolean equals(Object obj){
+        if(obj==null){
+            return false;
+        }
+        if(this.getClass() !=obj.getClass()){
+            return false;
+        }
+        //위 조건에서 this가 가리키는 인스턴스의 클래스와
+        // 파라미터 obj가 가리키는 인스턴스의 클래스가 같다고 결론이 났기에
+        // obj를 Memeber 타입으로 형변환
+        Member m = (Member) obj;
+
+        if (this.getNo() !=m.getNo()){
+            return false;
+        }
+
+        if(!this.getName().equals(m.getName())){
+            return false;
+        }
+        if(!this.getEmail().equals(m.getEmail())){
+            return false;
+        }
+        if(!this.getPassword().equals(m.getPassword())){
+            return false;
+        }
+        if(this.getGender() !=m.getGender())){
+            return false;
+        }
+    }
+
+
     public int getNo() {
         return no;
     }
