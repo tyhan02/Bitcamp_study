@@ -7,7 +7,7 @@ import util.Prompt;
 // 즉 Handler 인터페이스에 선언된 메서드를 모두 정의했다.
 public class MemberHandler implements Handler {
 
-    private MemberList list = new MemberList();
+    private ArrayList list = new ArrayList();
     private Prompt prompt;
     private String title;
 
@@ -69,8 +69,9 @@ public class MemberHandler implements Handler {
         System.out.println("번호, 이름, 이메일, 성별");
         System.out.println("---------------------------------------");
 
-        Member[] arr = this.list.list();
-        for (Member m : arr) {
+        Object[] arr = this.list.list();
+        for (Object obj : arr) {
+            Member m  =(Member) obj;
             System.out.printf("%d, %s, %s, %s\n",
                     m.getNo(), m.getName(), m.getEmail(),
                     toGenderString(m.getGender()));
