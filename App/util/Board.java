@@ -2,7 +2,8 @@ package util;
 
 public class Board {
 
-    private static int boardNo=1;
+    private static int boardNo = 1;
+
     private int no;
     private String title;
     private String content;
@@ -11,10 +12,33 @@ public class Board {
     private int viewCount;
     private long createdDate;
 
-    public Board(){
-        this.no=boardNo++;
-        this.createdDate=System.currentTimeMillis();
+    public Board() {
+        this.no = boardNo++;
+        this.createdDate = System.currentTimeMillis();
     }
+
+    public Board(int no) {
+        this.no = no;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Board b = (Board) obj;
+
+        if (this.getNo() != b.getNo()) {
+            return false;
+        }
+
+        return true;
+    }
+
     public int getNo() {
         return no;
     }
@@ -51,13 +75,12 @@ public class Board {
     public void setCreatedDate(long createdDate) {
         this.createdDate = createdDate;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
+
 
 }
