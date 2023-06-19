@@ -3,6 +3,7 @@ package handler;
 import util.Board;
 import util.Prompt;
 import util.LinkedList;
+import util.List;
 
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import java.util.Date;
 public class BoardHandler implements Handler {
 
 
-    private LinkedList list = new LinkedList();
+    private List list = new LinkedList();
     private Prompt prompt;
 
     private String title;
@@ -70,7 +71,7 @@ public class BoardHandler implements Handler {
         System.out.println("번호, 제목, 작성자, 조회수, 등록일");
         System.out.println("---------------------------------------");
 
-        Object[] arr = this.list.getList();
+        Object[] arr = this.list.toArray();
         for (Object obj : arr) {
             Board board = (Board) obj;
             System.out.printf("%d, %s, %s, %d, %tY-%5$tm-%5$td\n",
@@ -85,7 +86,7 @@ public class BoardHandler implements Handler {
     private void viewBoard() {
         int boardNo = this.prompt.inputInt("번호? ");
 
-        Board board = (Board) this.list.retrieve(new Board(boardNo));
+        Board board = this.findBy(boardNo);
         if (board == null) {
             System.out.println("해당 번호의 게시글이 없습니다!");
             return;
@@ -102,7 +103,7 @@ public class BoardHandler implements Handler {
     private void updateBoard() {
         int boardNo = this.prompt.inputInt("번호? ");
 
-        Board board = (Board) this.list.retrieve(new Board(boardNo));
+        Board board = this.findBy(boardNo);
         if (board == null) {
             System.out.println("해당 번호의 게시글이 없습니다!");
             return;
@@ -122,4 +123,17 @@ public class BoardHandler implements Handler {
             System.out.println("해당 번호의 게시글이 없습니다!");
         }
     }
+
+    private Board findBy(int no) {
+        Object[] arr = this.list.toArray();
+        for (Object obj : arr) {
+            Board b = (Board) obj;
+            if (b.getNo() == no) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+
 }
