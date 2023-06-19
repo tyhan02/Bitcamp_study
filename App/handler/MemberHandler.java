@@ -1,19 +1,21 @@
 package handler;
 
 import util.Prompt;
-import util.LinkedList;
+import util.List;
+
 
 // MemberHandler는 Handler 규칙에 따라 메서드를 구현했다.
 // 즉 Handler 인터페이스에 선언된 메서드를 모두 정의했다.
 public class MemberHandler implements Handler {
 
-    private LinkedList list = new LinkedList();
+    private List list;
     private Prompt prompt;
     private String title;
 
-    public MemberHandler(Prompt prompt, String title) {
+    public MemberHandler(Prompt prompt, String title, List list) {
         this.prompt = prompt;
         this.title = title;
+        this.list = list;
     }
 
     public void execute() {
@@ -65,9 +67,8 @@ public class MemberHandler implements Handler {
         System.out.println("번호, 이름, 이메일, 성별");
         System.out.println("---------------------------------------");
 
-        Object[] arr = this.list.getList();
-        for (Object obj : arr) {
-            Member m = (Member) obj;
+        for (int i = 0; i < this.list.size(); i++) {
+            Member m = (Member) this.list.get(i);
             System.out.printf("%d, %s, %s, %s\n",
                     m.getNo(), m.getName(), m.getEmail(),
                     toGenderString(m.getGender()));
@@ -77,7 +78,7 @@ public class MemberHandler implements Handler {
     private void viewMember() {
         int memberNo = this.prompt.inputInt("번호? ");
 
-        Member m = (Member) this.list.retrieve(new Member(memberNo));
+        Member m = this.findBy(memberNo);
         if (m == null) {
             System.out.println("해당 번호의 회원이 없습니다!");
             return;
@@ -95,7 +96,7 @@ public class MemberHandler implements Handler {
     private void updateMember() {
         int memberNo = this.prompt.inputInt("번호? ");
 
-        Member m = (Member) this.list.retrieve(new Member(memberNo));
+        Member m = this.findBy(memberNo);
         if (m == null) {
             System.out.println("해당 번호의 회원이 없습니다!");
             return;
@@ -137,47 +138,15 @@ public class MemberHandler implements Handler {
             System.out.println("해당 번호의 회원이 없습니다!");
         }
     }
+
+    private Member findBy(int no) {
+        for (int i = 0; i < this.list.size(); i++) {
+            Member m = (Member) this.list.get(i);
+            if (m.getNo() == no) {
+                return m;
+            }
+        }
+        return null;
+    }
+
 }
-
-
-//    public static void updateMember() {
-//        String a= Prompt.inputString("변경할 회원 번호를 입력하세요: ");
-//        int b= Integer.parseInt(a);
-//
-//        int index = findMemberIndex(b);
-//
-//        if (index == -1) {
-//            System.out.println("해당 회원을 찾을 수 없습니다.");
-//            return;
-//        }
-//
-//        System.out.println("[" + name[index] + "] 회원의 정보를 변경합니다.");
-//
-//        String newName = Prompt.inputString("변경할 이름: ");
-//        String newEmail = Prompt.inputString("변경할 이메일: ");
-//        String newPassword = Prompt.inputString("변경할 암호: ");
-//
-//        loop: while (true) {
-//            String menuNo = Prompt.inputString("변경할 성별:\n" +
-//                    "  1. 남자\n" +
-//                    "  2. 여자\n" +
-//                    "> ");
-//
-//            switch (menuNo) {
-//                case "1":
-//                    gender[index] = MALE;
-//                    break loop;
-//                case "2":
-//                    gender[index] = FEMALE;
-//                    break loop;
-//                default:
-//                    System.out.println("무효한 번호입니다.");
-//            }
-//        }
-//
-//        name[index] = newName;
-//        email[index] = newEmail;
-//        password[index] = newPassword;
-//
-//        System.out.println("회원 정보를 변경하였습니다.");
-//    }

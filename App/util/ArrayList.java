@@ -75,6 +75,11 @@ public class ArrayList implements List {
         return old;
     }
 
+    @Override
+    public int size() {
+        return this.length;
+    }
+
     private boolean isValid(int index) {
         return index >= 0 && index < this.length;
     }
@@ -89,12 +94,3 @@ public class ArrayList implements List {
         return -1;
     }
 }
-//    private int indexOf(Object obj) {
-//        for (int i = 0; i < this.length; i++) {
-//            Object item = this.list[i];
-//            if (item.equals(obj)) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
