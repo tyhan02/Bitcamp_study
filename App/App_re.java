@@ -4,12 +4,15 @@ import handler.MemberHandler;
 import util.Prompt;
 import util.ArrayList;
 import util.LinkedList;
+import util.MenuPrompt;
+
 
 public class App_re {
 
     public static void main(String[] args) {
 
-        Prompt prompt = new Prompt();
+        MenuPrompt prompt = new MenuPrompt();
+        prompt.appendBreadcrumb("메인", getMenu());
 
         Handler memberHandler = new MemberHandler(prompt, "회원", new ArrayList());
         Handler boardHandler = new BoardHandler(prompt, "게시글", new LinkedList());
@@ -17,14 +20,14 @@ public class App_re {
 
         printTitle();
 
-        printMenu();
+        prompt.printMenu();
 
         while (true) {
-            String menuNo = prompt.inputString("메인> ");
+            String menuNo = prompt.inputMenu();
             if (menuNo.equals("0")) {
                 break;
             } else if (menuNo.equals("menu")) {
-                printMenu();
+                prompt.printMenu();
             } else if (menuNo.equals("1")) {
                 memberHandler.execute();
             } else if (menuNo.equals("2")) {
@@ -39,11 +42,13 @@ public class App_re {
         prompt.close();
     }
 
-    static void printMenu() {
-        System.out.println("1. 회원");
-        System.out.println("2. 게시글");
-        System.out.println("3. 독서록");
-        System.out.println("0. 종료");
+    static String getMenu() {
+        StringBuilder menu = new StringBuilder();
+        menu.append("1. 회원\n");
+        menu.append("2. 게시글\n");
+        menu.append("3. 독서록\n");
+        menu.append("0. 종료\n");
+        return menu.toString();
     }
 
     static void printTitle() {

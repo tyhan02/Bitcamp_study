@@ -1,7 +1,8 @@
 package handler;
 
-import util.Prompt;
+
 import util.List;
+import util.MenuPrompt;
 
 
 // MemberHandler는 Handler 규칙에 따라 메서드를 구현했다.
@@ -9,21 +10,25 @@ import util.List;
 public class MemberHandler implements Handler {
 
     private List list;
-    private Prompt prompt;
+    private MenuPrompt prompt;
     private String title;
 
-    public MemberHandler(Prompt prompt, String title, List list) {
+    public MemberHandler(MenuPrompt prompt, String title, List list) {
         this.prompt = prompt;
         this.title = title;
         this.list = list;
     }
 
     public void execute() {
+
+        prompt.appendBreadcrumb(this.title);
+
         printMenu();
 
         while (true) {
-            String menuNo = prompt.inputString("%s> ", this.title);
+            String menuNo = prompt.inputMenu();
             if (menuNo.equals("0")) {
+                prompt.removeBreadcrumb();
                 return;
             } else if (menuNo.equals("menu")) {
                 printMenu();
