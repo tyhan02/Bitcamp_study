@@ -4,12 +4,10 @@ import util.ActionListener;
 import util.BreadcrumbPrompt;
 import util.List;
 
-public class MemberDeleteListener implements ActionListener {
-
-    private List list;
+public class MemberDeleteListener extends AbstractMemberListener {
 
     public MemberDeleteListener(List list) {
-        this.list = list;
+        super(list);
     }
 
     @Override
