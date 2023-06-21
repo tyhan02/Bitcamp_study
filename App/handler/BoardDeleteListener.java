@@ -6,12 +6,10 @@ import util.BreadcrumbPrompt;
 import util.List;
 
 
-public class BoardDeleteListener implements ActionListener {
-
-    private List list;
+public class BoardDeleteListener extends AbstractBoardListener {
 
     public BoardDeleteListener(List list) {
-        this.list = list;
+        super(list);
     }
 
     @Override
@@ -21,4 +19,5 @@ public class BoardDeleteListener implements ActionListener {
         }
     }
 }
+
 
