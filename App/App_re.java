@@ -1,48 +1,50 @@
-import handler.BoardHandler;
-import handler.Handler;
-import handler.MemberHandler;
+import handler.*;
 import util.*;
+
+import java.util.ArrayList;
 
 
 public class App_re {
 
     public static void main(String[] args) {
 
-        MenuPrompt prompt = new MenuPrompt();
-        prompt.appendBreadcrumb("메인", getMenu());
+        ArrayList memberList = new ArrayList();
+        LinkedList boardList = new LinkedList();
+        LinkedList readingList = new LinkedList();
 
-        Menu m1 = new Menu("회원");
-        Menu m2 = new Menu("게시글");
-        Menu m3 = new Menu("독서록");
+        BreadcrumbPrompt prompt = new BreadcrumbPrompt();
 
-        Handler memberHandler = new MemberHandler(prompt, "회원", new ArrayList());
-        Handler boardHandler = new BoardHandler(prompt, "게시글", new LinkedList());
-        Handler readingHandler = new BoardHandler(prompt, "독서록", new LinkedList());
+        MenuGroup mainMenu = new MenuGroup("메인");
+
+        MenuGroup memberMenu = new MenuGroup("회원");
+        memberMenu.add(new Menu("등록", new MemberAddListener((List) memberList)));
+        memberMenu.add(new Menu("목록", new MemberListListener((List) memberList)));
+        memberMenu.add(new Menu("조회", new MemberDetailListener((List) memberList)));
+        memberMenu.add(new Menu("변경", new MemberUpdateListener((List) memberList)));
+        memberMenu.add(new Menu("삭제", new MemberDeleteListener((List) memberList)));
+        mainMenu.add(memberMenu);
+
+        MenuGroup boardMenu = new MenuGroup("게시글");
+        boardMenu.add(new Menu("등록", new BoardAddListener(boardList)));
+        boardMenu.add(new Menu("목록", new BoardListListener(boardList)));
+        boardMenu.add(new Menu("조회", new BoardDetailListener(boardList)));
+        boardMenu.add(new Menu("변경", new BoardUpdateListener(boardList)));
+        boardMenu.add(new Menu("삭제", new BoardDeleteListener(boardList)));
+        mainMenu.add(boardMenu);
+
+        MenuGroup readingMenu = new MenuGroup("독서록");
+        readingMenu.add(new Menu("등록", new BoardAddListener(readingList)));
+        readingMenu.add(new Menu("목록", new BoardListListener(readingList)));
+        readingMenu.add(new Menu("조회", new BoardDetailListener(readingList)));
+        readingMenu.add(new Menu("변경", new BoardUpdateListener(readingList)));
+        readingMenu.add(new Menu("삭제", new BoardDeleteListener(readingList)));
+        mainMenu.add(readingMenu);
 
         printTitle();
 
-        prompt.printMenu();
-
-        loop: while (true) {
-            String menuNo = prompt.inputMenu();
-            switch (menuNo) {
-                case "0": break loop;
-                case "1": memberHandler.execute(); break;
-                case "2": boardHandler.execute(); break;
-                case "3": readingHandler.execute(); break;
-            }
-        }
+        mainMenu.execute(prompt);
 
         prompt.close();
-    }
-
-    static String getMenu() {
-        StringBuilder menu = new StringBuilder();
-        menu.append("1. 회원\n");
-        menu.append("2. 게시글\n");
-        menu.append("3. 독서록\n");
-        menu.append("0. 종료\n");
-        return menu.toString();
     }
 
     static void printTitle() {
