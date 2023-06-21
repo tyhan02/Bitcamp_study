@@ -1,7 +1,21 @@
-import handler.*;
-import util.*;
-
-import java.util.ArrayList;
+import handler.BoardAddListener;
+import handler.BoardDeleteListener;
+import handler.BoardDetailListener;
+import handler.BoardListListener;
+import handler.BoardUpdateListener;
+import handler.FooterListener;
+import handler.HeaderListener;
+import handler.HelloListener;
+import handler.MemberAddListener;
+import handler.MemberDeleteListener;
+import handler.MemberDetailListener;
+import handler.MemberListListener;
+import handler.MemberUpdateListener;
+import util.ArrayList;
+import util.BreadcrumbPrompt;
+import util.LinkedList;
+import util.Menu;
+import util.MenuGroup;
 
 
 public class App_re {
@@ -17,11 +31,11 @@ public class App_re {
         MenuGroup mainMenu = new MenuGroup("메인");
 
         MenuGroup memberMenu = new MenuGroup("회원");
-        memberMenu.add(new Menu("등록", new MemberAddListener((List) memberList)));
-        memberMenu.add(new Menu("목록", new MemberListListener((List) memberList)));
-        memberMenu.add(new Menu("조회", new MemberDetailListener((List) memberList)));
-        memberMenu.add(new Menu("변경", new MemberUpdateListener((List) memberList)));
-        memberMenu.add(new Menu("삭제", new MemberDeleteListener((List) memberList)));
+        memberMenu.add(new Menu("등록", new MemberAddListener(memberList)));
+        memberMenu.add(new Menu("목록", new MemberListListener(memberList)));
+        memberMenu.add(new Menu("조회", new MemberDetailListener(memberList)));
+        memberMenu.add(new Menu("변경", new MemberUpdateListener(memberList)));
+        memberMenu.add(new Menu("삭제", new MemberDeleteListener(memberList)));
         mainMenu.add(memberMenu);
 
         MenuGroup boardMenu = new MenuGroup("게시글");
@@ -39,6 +53,12 @@ public class App_re {
         readingMenu.add(new Menu("변경", new BoardUpdateListener(readingList)));
         readingMenu.add(new Menu("삭제", new BoardDeleteListener(readingList)));
         mainMenu.add(readingMenu);
+
+        Menu helloMenu = new Menu("안녕!");
+        helloMenu.addActionListener(new HeaderListener());
+        helloMenu.addActionListener(new HelloListener());
+        helloMenu.addActionListener(new FooterListener());
+        mainMenu.add(helloMenu);
 
         printTitle();
 
