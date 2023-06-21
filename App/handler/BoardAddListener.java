@@ -5,12 +5,10 @@ import util.ActionListener;
 import util.BreadcrumbPrompt;
 import util.List;
 
-public class BoardAddListener implements ActionListener {
-
-    private List list;
+public class BoardAddListener extends AbstractBoardListener {
 
     public BoardAddListener(List list) {
-        this.list = list;
+        super(list);
     }
 
     @Override
