@@ -3,12 +3,10 @@ package handler;
 import util.List;
 import util.BreadcrumbPrompt;
 import util.ActionListener;
-public class BoardListListener implements ActionListener {
-
-    private List list;
+public class BoardListListener extends AbstractBoardListener {
 
     public BoardListListener(List list) {
-        this.list = list;
+        super(list);
     }
 
     @Override
@@ -29,3 +27,5 @@ public class BoardListListener implements ActionListener {
     }
 
 }
+
+
