@@ -7,7 +7,7 @@ public class Test2 {
         A obj = new A();
         // obj.v1 =100;
 
-        obj.v2 =200;
+       // obj.v2 =200;
 
     }
 }
