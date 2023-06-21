@@ -4,12 +4,10 @@ import util.BreadcrumbPrompt;
 import util.List;
 import util.ActionListener;
 
-public class BoardUpdateListener implements ActionListener {
-
-    private List list;
+public class BoardUpdateListener extends AbstractBoardListener {
 
     public BoardUpdateListener(List list) {
-        this.list = list;
+        super(list);
     }
 
     @Override
@@ -30,15 +28,4 @@ public class BoardUpdateListener implements ActionListener {
         board.setTitle(prompt.inputString("제목(%s)? ", board.getTitle()));
         board.setContent(prompt.inputString("내용(%s)? ", board.getContent()));
     }
-
-    private Board findBy(int no) {
-        for (int i = 0; i < this.list.size(); i++) {
-            Board b = (Board) this.list.get(i);
-            if (b.getNo() == no) {
-                return b;
-            }
-        }
-        return null;
-    }
 }
-
