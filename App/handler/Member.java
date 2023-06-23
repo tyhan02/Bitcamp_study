@@ -17,6 +17,7 @@ public class Member {
     public Member() {
         this.no = userId++;
     }
+    //
 
     // 같은 기능을 수행하는 생성자가 위에 있다.
     // 다만 파라미터가 다를 뿐이다.
