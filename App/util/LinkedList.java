@@ -6,7 +6,7 @@ package util;
 
 import java.io.ObjectInputValidation;
 
-public class LinkedList implements List {
+public class LinkedList<E> implements List<E> {
 
     Node head;
     Node tail;
