@@ -22,7 +22,7 @@ public class App_re {
 
     public static void main(String[] args) {
 
-        ArrayList memberList = new ArrayList();
+        ArrayList<Member> memberList = new ArrayList<>();
         LinkedList boardList = new LinkedList();
         LinkedList readingList = new LinkedList();
 
