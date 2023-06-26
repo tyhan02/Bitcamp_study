@@ -2,7 +2,7 @@ package handler;
 
 import util.ActionListener;
 import util.BreadcrumbPrompt;
-import util.List;
+import java.util.List;
 
 public abstract class AbstractMemberListener implements ActionListener {
 
