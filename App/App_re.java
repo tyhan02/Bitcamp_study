@@ -11,11 +11,13 @@ import handler.MemberDeleteListener;
 import handler.MemberDetailListener;
 import handler.MemberListListener;
 import handler.MemberUpdateListener;
-import util.ArrayList;
 import util.BreadcrumbPrompt;
-import util.LinkedList;
-import util.Menu;
+import util.*;
+import handler.*;
+import handler.Board;
 import util.MenuGroup;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class App_re {
@@ -23,8 +25,8 @@ public class App_re {
     public static void main(String[] args) {
 
         ArrayList<Member> memberList = new ArrayList<>();
-        LinkedList boardList = new LinkedList();
-        LinkedList readingList = new LinkedList();
+        LinkedList<Board> boardList = new LinkedList<>();
+        LinkedList<Board> readingList = new LinkedList<>();
 
         BreadcrumbPrompt prompt = new BreadcrumbPrompt();
 
