@@ -5,12 +5,10 @@ import util.BreadcrumbPrompt;
 import util.List;
 
 
-public class MemberDetailListener implements ActionListener {
+public class MemberDetailListener extends AbstractMemberListener {
 
-    private List list;
-
-    public MemberDetailListener(List list) {
-        this.list = list;
+    public MemberDetailListener(List<Member> list) {
+        super(list);
     }
 
     @Override
@@ -27,19 +25,4 @@ public class MemberDetailListener implements ActionListener {
         System.out.printf("이메일: %s\n", m.getEmail());
         System.out.printf("성별: %s\n", toGenderString(m.getGender()));
     }
-
-    private static String toGenderString(char gender) {
-        return gender == 'M' ? "남성" : "여성";
-    }
-
-    private Member findBy(int no) {
-        for (int i = 0; i < this.list.size(); i++) {
-            Member m = (Member) this.list.get(i);
-            if (m.getNo() == no) {
-                return m;
-            }
-        }
-        return null;
-    }
-
 }

@@ -4,12 +4,10 @@ import util.ActionListener;
 import util.BreadcrumbPrompt;
 import util.List;
 
-public class MemberListListener implements ActionListener {
+public class MemberListListener extends AbstractMemberListener {
 
-    private List list;
-
-    public MemberListListener(List list) {
-        this.list = list;
+    public MemberListListener(List<Member> list) {
+        super(list);
     }
 
     @Override
@@ -19,15 +17,11 @@ public class MemberListListener implements ActionListener {
         System.out.println("---------------------------------------");
 
         for (int i = 0; i < this.list.size(); i++) {
-            Member m = (Member) this.list.get(i);
+            Member m = this.list.get(i);
             System.out.printf("%d, %s, %s, %s\n",
                     m.getNo(), m.getName(), m.getEmail(),
                     toGenderString(m.getGender()));
         }
-    }
-
-    private static String toGenderString(char gender) {
-        return gender == 'M' ? "남성" : "여성";
     }
 
 }
