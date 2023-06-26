@@ -1,12 +1,12 @@
 package handler;
 
 import util.BreadcrumbPrompt;
-import util.List;
-import util.ActionListener;
+import java.util.List;
+
 
 public class BoardUpdateListener extends AbstractBoardListener {
 
-    public BoardUpdateListener(List list) {
+    public BoardUpdateListener(List<Board> list) {
         super(list);
     }
 

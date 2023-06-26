@@ -3,12 +3,12 @@ package handler;
 
 import util.ActionListener;
 import util.BreadcrumbPrompt;
-import util.List;
+import java.util.List;
 
 
 public class BoardDeleteListener extends AbstractBoardListener {
 
-    public BoardDeleteListener(List list) {
+    public BoardDeleteListener(List<Board> list) {
         super(list);
     }
 
@@ -19,5 +19,3 @@ public class BoardDeleteListener extends AbstractBoardListener {
         }
     }
 }
-
-

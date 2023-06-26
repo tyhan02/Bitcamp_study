@@ -1,11 +1,13 @@
 package handler;
 
 
-import util.*;
+import util.BreadcrumbPrompt;
+
+import java.util.LinkedList;
 
 public class BoardDetailListener extends AbstractBoardListener {
 
-    public BoardDetailListener(List list) {
+    public BoardDetailListener(LinkedList<Board> list) {
         super(list);
     }
 
@@ -27,4 +29,5 @@ public class BoardDetailListener extends AbstractBoardListener {
         board.setViewCount(board.getViewCount() + 1);
     }
 }
+
 

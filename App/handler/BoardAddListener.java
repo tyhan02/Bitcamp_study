@@ -1,13 +1,14 @@
 package handler;
 
 
-import util.ActionListener;
+
 import util.BreadcrumbPrompt;
-import util.List;
+import java.util.List;
+
 
 public class BoardAddListener extends AbstractBoardListener {
 
-    public BoardAddListener(List list) {
+    public BoardAddListener(List<Board> list) {
         super(list);
     }
 
@@ -21,4 +22,3 @@ public class BoardAddListener extends AbstractBoardListener {
         this.list.add(board);
     }
 }
-
