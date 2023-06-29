@@ -1,27 +1,14 @@
-import handler.BoardAddListener;
-import handler.BoardDeleteListener;
-import handler.BoardDetailListener;
-import handler.BoardListListener;
-import handler.BoardUpdateListener;
-import handler.FooterListener;
-import handler.HeaderListener;
-import handler.HelloListener;
-import handler.MemberAddListener;
-import handler.MemberDeleteListener;
-import handler.MemberDetailListener;
-import handler.MemberListListener;
-import handler.MemberUpdateListener;
-import util.BreadcrumbPrompt;
+
+import handler.*;
+
+
 import vo.Member;
 import util.*;
 import vo.Board;
-import util.MenuGroup;
-
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-import io.BufferedDataInputStream;
-import io.BufferedDataOutputStream;
+import java.util.List;
 
 public class App_re {
 
@@ -102,7 +89,8 @@ public class App_re {
 
     private void loadMember() {
         try {
-            BufferedDataInputStream in = new BufferedDataInputStream("member.data");
+            FileInputStream in0 = new FileInputStream("member.data");
+            DataInputStream in = new DataInputStream(in0); // <== Decorator 역할을 수행!
 
             int size = in.readShort();
 
@@ -126,9 +114,10 @@ public class App_re {
         }
     }
 
-    private void loadBoard(String filename, LinkedList<Board> list) {
+    private void loadBoard(String filename, List<Board> list) {
         try {
-            BufferedDataInputStream in = new BufferedDataInputStream(filename);
+            FileInputStream in0 = new FileInputStream(filename);
+            DataInputStream in = new DataInputStream(in0); // <== Decorator 역할을 수행!
 
             int size = in.readShort();
 
@@ -157,7 +146,8 @@ public class App_re {
 
     private void saveMember() {
         try {
-            BufferedDataOutputStream out = new BufferedDataOutputStream("member.data");
+            FileOutputStream out0 = new FileOutputStream("member.data");
+            DataOutputStream out = new DataOutputStream(out0); // <== Decorator(장식품) 역할 수행!
 
             out.writeShort(memberList.size());
 
@@ -175,9 +165,11 @@ public class App_re {
         }
     }
 
-    private void saveBoard(String filename, LinkedList<Board> list) {
+    private void saveBoard(String filename, List<Board> list) {
         try {
-            BufferedDataOutputStream out = new BufferedDataOutputStream(filename);
+            FileOutputStream out0 = new FileOutputStream(filename);
+            BufferedOutputStream out1 = new BufferedOutputStream(out0);
+            DataOutputStream out = new DataOutputStream(out0); // <== Decorator(장식품) 역할 수행!
 
             out.writeShort(list.size());
 
