@@ -1,6 +1,6 @@
 package Test_0616;
 
-import handler.Member;
+import vo.Member;
 
 public class Test2 {
     public static void main(String[] args) {
