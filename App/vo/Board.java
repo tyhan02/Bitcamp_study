@@ -1,4 +1,4 @@
-package handler;
+package vo;
 
 public class Board {
 
