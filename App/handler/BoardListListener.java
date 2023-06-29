@@ -2,6 +2,8 @@ package handler;
 
 import java.util.List;
 import util.BreadcrumbPrompt;
+import vo.Board;
+
 import java.util.Iterator;
 public class BoardListListener extends AbstractBoardListener {
 
