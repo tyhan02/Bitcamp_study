@@ -1,6 +1,8 @@
 package handler;
 
 import util.ActionListener;
+import vo.Board;
+
 import java.util.List;
 
 

@@ -2,6 +2,8 @@ package handler;
 
 import util.ActionListener;
 import util.BreadcrumbPrompt;
+import vo.Member;
+
 import java.util.List;
 
 public abstract class AbstractMemberListener implements ActionListener {
