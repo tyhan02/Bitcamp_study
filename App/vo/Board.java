@@ -1,6 +1,9 @@
 package vo;
 
-public class Board {
+import java.io.Serializable;
+
+public class Board implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public static int boardNo = 1;
 
@@ -19,6 +22,17 @@ public class Board {
 
     public Board(int no) {
         this.no = no;
+    }
+
+    public String toCsvString(){
+        return String.format("%d,%s,%s,%s,%s,%d,%d",
+                this.getNo(),
+                this.getTitle(),
+                this.getContent(),
+                this.getWriter(),
+                this.getPassword(),
+                this.getViewCount(),
+                this.getCreatedDate());
     }
 
     public boolean equals(Object obj) {
