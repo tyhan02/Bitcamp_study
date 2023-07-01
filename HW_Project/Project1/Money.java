@@ -11,8 +11,6 @@ public class Money {
         System.out.printf("물품: %s", "삼각김밥");
         System.out.println();
 
-
-
         System.out.print("가격: ");
         System.out.println(100);
 
