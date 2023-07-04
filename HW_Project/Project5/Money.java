@@ -17,13 +17,13 @@ public class Money {
         int[] no = new int[MAX_SIZE];
         String[] name = new String[MAX_SIZE];
         int[] price = new int[MAX_SIZE];
-        char[] method = new char[MAX_SIZE];
-        char[] category = new char[MAX_SIZE];
+        String[] method = new String[MAX_SIZE];
+        String[] category = new String[MAX_SIZE];
 
         // 물품 정보 등록
         for (int i = 0; i < MAX_SIZE; i++) {
 
-            System.out.print("이름? ");
+            System.out.print("구매 물품? : ");
             name[i] = scanner.next();
 
             System.out.print("가격? ");
@@ -38,10 +38,10 @@ public class Money {
 
                 switch (menu1) {
                     case "1":
-                        method[i] = 'P';
+                        method[i] = "CASH";  // 따옴표로 감싸서 문자열로 저장
                         break loop;
                     case "2":
-                        method[i] = 'Q';
+                        method[i] = "CARD";  // 따옴표로 감싸서 문자열로 저장
                         break loop;
                     default:
                         System.out.println("무효한 번호입니다.");
@@ -61,19 +61,22 @@ public class Money {
 
                 switch (menu2) {
                     case "1":
-                        category[i] = 'A';
+                        category[i] = "식사";
                         break loop;
                     case "2":
-                        category[i] = 'B';
+                        category[i] = "술";
+                        break loop;
                     case "3":
-                        category[i] = 'C';
+                        category[i] = "쇼핑";
+                        break loop;
                     case "4":
-                        category[i] = 'D';
+                        category[i] = "교통";
+                        break loop;
                     case "5":
-                        category[i] = 'E';
+                        category[i] = "생활";
+                        break loop;
                     case "6":
-                        category[i] = 'F';
-
+                        category[i] = "기타";
                         break loop;
                     default:
                         System.out.println("무효한 번호입니다.");
@@ -98,7 +101,7 @@ public class Money {
         System.out.println("---------------------------------------");
 
         for (int i = 0; i < length; i++) {
-            System.out.printf("%d, %s, %d, %c, %c\n", no[i], name[i], price[i], method[i],category[i]);
+            System.out.printf("%d, %s, %d, %s, %s\n", no[i], name[i], price[i], method[i], category[i]);
         }
         scanner.close();
     }
