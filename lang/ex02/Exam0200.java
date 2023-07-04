@@ -8,11 +8,6 @@ package com.eomcs.lang.ex02;
 //- 클래스나 메서드, 변수 선언에 붙일 수 있다.
 //
 
-/**
- * 클래스에 대한 설명
- * @author eomjinyoung
- *
- */
 public class Exam0200 {
   /**
    * 변수에 대한 설명

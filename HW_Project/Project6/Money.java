@@ -1,6 +1,6 @@
 package Project6;
 
-import com.google.gson.JsonObject;
+
 import java.util.Scanner;
 
 
@@ -193,3 +193,10 @@ public class Money {
         scanner.close();
     }
 }
+//추가해야할거 json으로 저번달 내역과 비교
+// 리팩토링 class 분리
+// 각 달 내역 넣어놓기
+// 사용 날짜 넣고 비교
+// 월별 일별 비교 하기
+// 메모기능
+//
