@@ -28,6 +28,7 @@ import vo.Member;
 import util.BreadcrumbPrompt;
 import util.Menu;
 import util.MenuGroup;
+import vo.AutoIncrement;
 
 public class App {
 
