@@ -6,11 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/myapp/app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HW_Project" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/HW_project_renew" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/App/app34" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/App_re" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Homework_develop" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/App" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW_project_first_book" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Test/Test_0607" />
       <excludeFolder url="file://$MODULE_DIR$/lang" />
       <excludeFolder url="file://$MODULE_DIR$/myapp" />

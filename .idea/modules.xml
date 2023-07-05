@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HW_project_renew/HW_project_renew.iml" filepath="$PROJECT_DIR$/HW_project_renew/HW_project_renew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HW_project_first_book/HW_project_renew.iml" filepath="$PROJECT_DIR$/HW_project_first_book/HW_project_renew.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bt.iml" filepath="$PROJECT_DIR$/.idea/bt.iml" />
     </modules>
