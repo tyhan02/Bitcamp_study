@@ -1,25 +1,27 @@
 package handler;
 
 import java.util.List;
+
+import dao.MemberDao;
 import vo.Member;
 import util.BreadcrumbPrompt;
 
-public class MemberAddListener extends AbstractMemberListener {
+public class MemberAddListener implements MemberActionListener {
 
-  public MemberAddListener(List<Member> list) {
-    super(list);
+  MemberDao memberDao;
+
+  public MemberAddListener(MemberDao memberDao) {
+    this.memberDao = memberDao;
   }
 
   @Override
   public void service(BreadcrumbPrompt prompt) {
     Member m = new Member();
-
-    m.setNo(Member.userId++);
     m.setName(prompt.inputString("이름? "));
     m.setEmail(prompt.inputString("이메일? "));
     m.setPassword(prompt.inputString("암호? "));
-    m.setGender(inputGender((char)0, prompt));
+    m.setGender(MemberActionListener.inputGender((char)0, prompt));
 
-    this.list.add(m);
+    memberDao.insert(m);
   }
 }
