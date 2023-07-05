@@ -10,6 +10,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import dao.MemberDao;
 import handler.BoardAddListener;
 import handler.BoardDeleteListener;
 import handler.BoardDetailListener;
@@ -29,10 +30,13 @@ import util.BreadcrumbPrompt;
 import util.Menu;
 import util.MenuGroup;
 import vo.AutoIncrement;
+import util.ActionListener;
+import dao.MemberListDao;
 
 public class App {
 
-  ArrayList<Member> memberList = new ArrayList<>();
+  MemberDao memberDao = new MemberListDao("member.json");
+
   LinkedList<Board> boardList = new LinkedList<>();
   LinkedList<Board> readingList = new LinkedList<>();
 
@@ -64,24 +68,22 @@ public class App {
   }
 
   private void loadData() {
-    loadJson("member.json", memberList, Member.class);
     loadJson("board.json", boardList, Board.class);
     loadJson("reading.json", readingList, Board.class);
   }
 
   private void saveData() {
-    saveJson("member.json", memberList);
     saveJson("board.json", boardList);
     saveJson("reading.json", readingList);
   }
 
   private void prepareMenu() {
     MenuGroup memberMenu = new MenuGroup("회원");
-    memberMenu.add(new Menu("등록", new MemberAddListener(memberList)));
-    memberMenu.add(new Menu("목록", new MemberListListener(memberList)));
-    memberMenu.add(new Menu("조회", new MemberDetailListener(memberList)));
-    memberMenu.add(new Menu("변경", new MemberUpdateListener(memberList)));
-    memberMenu.add(new Menu("삭제", new MemberDeleteListener(memberList)));
+    memberMenu.add(new Menu("등록", new MemberAddListener(memberDao)));
+    memberMenu.add(new Menu("목록", new MemberListListener(memberDao)));
+    memberMenu.add(new Menu("조회", new MemberDetailListener(memberDao)));
+    memberMenu.add(new Menu("변경", new MemberUpdateListener(memberDao)));
+    memberMenu.add(new Menu("삭제", new MemberDeleteListener(memberDao)));
     mainMenu.add(memberMenu);
 
     MenuGroup boardMenu = new MenuGroup("게시글");

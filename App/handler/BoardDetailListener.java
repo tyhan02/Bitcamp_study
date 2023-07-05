@@ -3,18 +3,21 @@ package handler;
 import java.util.List;
 import vo.Board;
 import util.BreadcrumbPrompt;
+import dao.BoardDao;
+import util.ActionListener;
+public class BoardDetailListener implements ActionListener {
 
-public class BoardDetailListener extends AbstractBoardListener {
+  BoardDao boardDao;
 
-  public BoardDetailListener(List<Board> list) {
-    super(list);
+  public BoardDetailListener(BoardDao boardDao) {
+    this.boardDao = boardDao;
   }
 
   @Override
   public void service(BreadcrumbPrompt prompt) {
     int boardNo = prompt.inputInt("번호? ");
 
-    Board board = this.findBy(boardNo);
+    Board board = boardDao.findBy(boardNo);
     if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다!");
       return;
@@ -28,6 +31,8 @@ public class BoardDetailListener extends AbstractBoardListener {
     board.setViewCount(board.getViewCount() + 1);
   }
 }
+
+
 
 
 
