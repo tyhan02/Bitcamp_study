@@ -41,9 +41,9 @@ tasks.withType(JavaCompile) {
 }
 
 // eclipse 프로젝트 이름을 설정하기
-eclipse {
+intellij {
     project {
-        name = "App"
+        name = "App-server"
     }
     jdt {
       sourceCompatibility = 17
