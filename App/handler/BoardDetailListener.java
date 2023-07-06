@@ -1,6 +1,5 @@
 package handler;
 
-import java.util.List;
 import vo.Board;
 import util.BreadcrumbPrompt;
 import dao.BoardDao;
@@ -32,7 +31,6 @@ public class BoardDetailListener implements ActionListener {
     boardDao.update(board);
   }
 }
-
 
 
 

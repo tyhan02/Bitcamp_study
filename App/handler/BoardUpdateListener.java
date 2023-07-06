@@ -1,7 +1,5 @@
 package handler;
 
-import java.util.List;
-
 import dao.BoardDao;
 import util.ActionListener;
 import vo.Board;

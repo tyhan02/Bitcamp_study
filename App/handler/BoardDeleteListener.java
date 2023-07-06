@@ -1,10 +1,7 @@
 package handler;
 
-import java.util.List;
-
 import dao.BoardDao;
 import util.ActionListener;
-import vo.Board;
 import util.BreadcrumbPrompt;
 
 public class BoardDeleteListener implements ActionListener {

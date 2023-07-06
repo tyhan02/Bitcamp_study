@@ -1,16 +1,8 @@
 package dao;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+
 import util.JsonDataHelper;
-import vo.AutoIncrement;
 import vo.Board;
 public class BoardListDao implements BoardDao {
 
