@@ -3,7 +3,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/myapp/app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HW_Project" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/App/app34" isTestSource="false" />
@@ -16,6 +15,10 @@
       <sourceFolder url="file://$MODULE_DIR$/My" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/myapphw" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bt.net" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/myapp/app-client/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/myapp/app-common/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/myapp/app-server/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/myapp/app/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Test/Test_0607" />
       <excludeFolder url="file://$MODULE_DIR$/lang" />
       <excludeFolder url="file://$MODULE_DIR$/myapp" />
