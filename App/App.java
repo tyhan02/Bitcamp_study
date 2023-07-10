@@ -66,7 +66,7 @@ public class App {
     mainMenu.add(boardMenu);
 
     MenuGroup readingMenu = new MenuGroup("독서록");
-    readingMenu.add(new Menu("등록", new BoardAddListener(readingDao)));
+    readingMenu.add(new Menu("등록", new BoardAddListener()));
     readingMenu.add(new Menu("목록", new BoardListListener(readingDao)));
     readingMenu.add(new Menu("조회", new BoardDetailListener(readingDao)));
     readingMenu.add(new Menu("변경", new BoardUpdateListener(readingDao)));
