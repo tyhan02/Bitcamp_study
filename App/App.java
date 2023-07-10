@@ -52,9 +52,9 @@ public class App {
     MenuGroup memberMenu = new MenuGroup("회원");
     memberMenu.add(new Menu("등록", new MemberAddListener()));
     memberMenu.add(new Menu("목록", new MemberListListener()));
-    memberMenu.add(new Menu("조회", new MemberDetailListener()));
-    memberMenu.add(new Menu("변경", new MemberUpdateListener()));
-    memberMenu.add(new Menu("삭제", new MemberDeleteListener()));
+    memberMenu.add(new Menu("조회", new MemberDetailListener(memberDao)));
+    memberMenu.add(new Menu("변경", new MemberUpdateListener(memberDao)));
+    memberMenu.add(new Menu("삭제", new MemberDeleteListener(memberDao)));
     mainMenu.add(memberMenu);
 
     MenuGroup boardMenu = new MenuGroup("게시글");
