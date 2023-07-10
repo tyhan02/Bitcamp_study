@@ -19,6 +19,7 @@
       <sourceFolder url="file://$MODULE_DIR$/myapp/app-common/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/myapp/app-server/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/myapp/app/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eomcs/exception/ex1" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/Test/Test_0607" />
       <excludeFolder url="file://$MODULE_DIR$/lang" />
       <excludeFolder url="file://$MODULE_DIR$/myapp" />
