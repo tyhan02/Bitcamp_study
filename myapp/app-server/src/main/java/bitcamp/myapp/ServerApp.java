@@ -1,22 +1,18 @@
 package bitcamp.myapp;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.HashMap;
 import bitcamp.myapp.dao.BoardListDao;
 import bitcamp.myapp.dao.MemberListDao;
 import bitcamp.net.RequestEntity;
 import bitcamp.net.ResponseEntity;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.HashMap;
-
-// 1) 클라이언트가 보낸 명령을 데이터이름과 메서드 이름으로 분리한다.
-// 2) 클라이언트가 요청한 DAO 객체와 메서드를 찾는다.
-// 3) 메서드의 파라미터와 리턴 타입을 알아내기
-// 4) 메서드 호출 및 리턴 값 받기
 public class ServerApp {
 
   int port;
@@ -53,19 +49,46 @@ public class ServerApp {
     this.serverSocket = new ServerSocket(port);
     System.out.println("서버 실행 중...");
 
-    Socket socket = serverSocket.accept();
-    DataInputStream in = new DataInputStream(socket.getInputStream());
-    DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-
     while (true) {
+      processRequest(serverSocket.accept());
+    }
+  }
+
+  public static Method findMethod(Object obj, String methodName) {
+    Method[] methods = obj.getClass().getDeclaredMethods();
+    for (int i = 0; i < methods.length; i++) {
+      if (methods[i].getName().equals(methodName)) {
+        return methods[i];
+      }
+    }
+    return null;
+  }
+
+  public static Object call(Object obj, Method method, RequestEntity request) throws Exception {
+    Parameter[] params = method.getParameters();
+    if (params.length > 0) {
+      return method.invoke(obj, request.getObject(params[0].getType()));
+    } else {
+      return method.invoke(obj);
+    }
+  }
+
+  public void processRequest(Socket socket) {
+    try (Socket s = socket;
+         DataInputStream in = new DataInputStream(socket.getInputStream());
+         DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
+
+      InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+      System.out.printf("%s:%s 클라이언트가 접속했음!\n",
+              socketAddress.getHostString(),
+              socketAddress.getPort());
+
+      // 클라이언트 요청을 반복해서 처리하지 않는다.
+      // => 접속 -> 요청 -> 실행 -> 응답 -> 연결 끊기
       RequestEntity request = RequestEntity.fromJson(in.readUTF());
 
       String command = request.getCommand();
       System.out.println(command);
-
-      if (command.equals("quit")) {
-        break;
-      }
 
       String[] values = command.split("/");
       String dataName = values[0];
@@ -77,49 +100,39 @@ public class ServerApp {
                 .status(ResponseEntity.ERROR)
                 .result("데이터를 찾을 수 없습니다.")
                 .toJson());
-        continue;
+        return;
       }
 
-      Method[] methods = dao.getClass().getDeclaredMethods();
-      Method method = null;
-      for (int i = 0; i < methods.length; i++) {
-        if (methods[i].getName().equals(methodName)) {
-          method = methods[i];
-          break;
-        }
-      }
-
+      Method method = findMethod(dao, methodName);
       if (method == null) {
         out.writeUTF(new ResponseEntity()
                 .status(ResponseEntity.ERROR)
                 .result("메서드를 찾을 수 없습니다.")
                 .toJson());
-        continue;
+        return;
       }
 
-      Parameter[] params = method.getParameters();
+      try {
+        Object result = call(dao, method, request);
 
-      // 메서드를 호출
-      Object returnValue = null;
+        ResponseEntity response = new ResponseEntity();
+        response.status(ResponseEntity.SUCCESS);
+        response.result(result);
+        out.writeUTF(response.toJson());
 
-      if (params.length > 0) {
-        // => 호출할 메서드가 파라미터를 가지고 있다면,
-        // => 클라이언트가 보낸 JSON 데이터를 메서드의 파라미터 값으로 deserialize 한다.
-        Object arg = request.getObject(params[0].getType());
-        returnValue = method.invoke(dao, arg);
-      } else {
-        returnValue = method.invoke(dao);
+      } catch (Exception e) {
+        ResponseEntity response = new ResponseEntity();
+        response.status(ResponseEntity.ERROR);
+        response.result(e.getMessage());
+        out.writeUTF(response.toJson());
       }
-
-      // 메서드 호출 결과를 클라이언트에게 보낸다.
-      ResponseEntity response = new ResponseEntity();
-      response.status(ResponseEntity.SUCCESS);
-      response.result(returnValue);
-      out.writeUTF(response.toJson());
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
-
-    in.close();
-    out.close();
-    socket.close();
   }
+
 }
+
+
+
+
