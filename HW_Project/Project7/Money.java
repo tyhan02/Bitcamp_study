@@ -1,49 +1,47 @@
-package Project6;
+package Project7;
 
 import java.util.Scanner;
 
 public class Money {
+
+    static Scanner scanner = new Scanner(System.in);
+
+    static final int MAX_SIZE = 100;
+    static int userId = 1;
+    static int length = 0;
+
+    static int[] no = new int[MAX_SIZE];
+    static String[] name = new String[MAX_SIZE];
+    static int[] price = new int[MAX_SIZE];
+    static String[] method = new String[MAX_SIZE];
+    static String[] category = new String[MAX_SIZE];
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        final int MAX_SIZE = 100;
-        int userId = 1;
-        int length = 0;
-
-        int[] no = new int[MAX_SIZE];
-        String[] name = new String[MAX_SIZE];
-        int[] price = new int[MAX_SIZE];
-        String[] method = new String[MAX_SIZE];
-        String[] category = new String[MAX_SIZE];
 
         printTitle();
 
-        for (int i = 0; i < MAX_SIZE; i++) {
-            inputMember(scanner, i, name, category, method, price, no, userId++);
-            length++;
-            if (!promptContinue(scanner)) {
+        while (length < MAX_SIZE) {
+            inputMember();
+            if (!promptContinue()) {
                 break;
             }
         }
 
-        printMembers(length, no, name, price, method, category);
+        printMembers();
 
         scanner.close();
     }
+
 
     static void printTitle() {
         System.out.println("나의 용돈 관리 시스템");
         System.out.println("----------------------------------");
     }
 
-    static void inputMember(Scanner scanner, int i,
-                            String[] name, String[] category, String[] method, int[] price, int[] no, int userId) {
+    static void inputMember() {
 
-        System.out.print("구매 물품? : ");
-        name[i] = scanner.next();
-
-        System.out.print("가격? ");
-        price[i] = Integer.parseInt(scanner.next());
+        name[length] = prompt("품목?: ");
+        price[length] = Integer.parseInt(prompt("가격?: "));
 
         loop:
         while (true) {
@@ -55,10 +53,10 @@ public class Money {
 
             switch (menu1) {
                 case "1":
-                    method[i] = "CASH";  // 따옴표로 감싸서 문자열로 저장
+                    method[length] = "CASH";  // 따옴표로 감싸서 문자열로 저장
                     break loop;
                 case "2":
-                    method[i] = "CARD";  // 따옴표로 감싸서 문자열로 저장
+                    method[length] = "CARD";  // 따옴표로 감싸서 문자열로 저장
                     break loop;
                 default:
                     System.out.println("무효한 번호입니다.");
@@ -79,42 +77,42 @@ public class Money {
 
             switch (menu2) {
                 case "1":
-                    category[i] = "식사";
+                    category[length] = "식사";
                     break loop;
                 case "2":
-                    category[i] = "술";
+                    category[length] = "술";
                     break loop;
                 case "3":
-                    category[i] = "쇼핑";
+                    category[length] = "쇼핑";
                     break loop;
                 case "4":
-                    category[i] = "교통";
+                    category[length] = "교통";
                     break loop;
                 case "5":
-                    category[i] = "생활";
+                    category[length] = "생활";
                     break loop;
                 case "6":
-                    category[i] = "기타";
+                    category[length] = "기타";
                     break loop;
                 default:
                     System.out.println("무효한 번호입니다.");
             }
         }
 
-        no[i] = userId++;
+        no[length] = userId++;
+        length++;
     }
 
-    static boolean promptContinue(Scanner scanner) {
-        System.out.print("계속 하시겠습니까?(Y/n) ");
-        scanner.nextLine();  // 개행 문자 처리
-        String response = scanner.nextLine();
+    static boolean promptContinue() {
+
+        String response = prompt("계속 하시겠습니까?(Y/n)");
         if (!response.equals("") && !response.equalsIgnoreCase("Y")) {
             return false;
         }
         return true;
     }
 
-    static void printMembers(int length, int[] no, String[] name, int[] price, String[] method, String[] category) {
+    static void printMembers() {
         System.out.println("---------------------------------------");
         System.out.println("번호, 이름, 가격, 품목, 카테고리");
         System.out.println("---------------------------------------");
@@ -122,5 +120,10 @@ public class Money {
         for (int i = 0; i < length; i++) {
             System.out.printf("%d, %s, %d, %s, %s\n", no[i], name[i], price[i], method[i], category[i]);
         }
+    }
+
+    static String prompt(String title) {
+        System.out.print(title);
+        return scanner.nextLine();
     }
 }
