@@ -144,4 +144,5 @@ public class MemberHandler {
     }
 
     public static boolean available() {return length < MAX_SIZE;}
+    }
 }
