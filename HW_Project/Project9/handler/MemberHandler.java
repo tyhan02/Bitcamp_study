@@ -14,6 +14,8 @@ public class MemberHandler {
     static char[] category = new char[MAX_SIZE];
     static int userId = 1;
     static int length = 0;
+    static final char CASH = 'M';
+    static final char CARD = 'W';
     public static void inputMember() {
 
         if (!available()) {
@@ -39,8 +41,8 @@ public class MemberHandler {
             }
         }
 
-        public static void viewMember(){
-            String memberNO = Prompt.inputString("번호? ");
+        public static void viewMember() {
+            String memberNo= Prompt.inputString("번호? ");
             for (int i = 0; i < length; i++) {
                 if (no[i] == Integer.parseInt(memberNo)) {
                     System.out.printf("이름: %s\n", name[i]);
@@ -97,7 +99,7 @@ public class MemberHandler {
 
             }
         }
-        private static char inputCategory(String category){
+        private static char toCategoryString(String category){
             String label;
             if (category == 0){
                 label = "카테고리\n";
@@ -143,6 +145,44 @@ public class MemberHandler {
         length++;
     }
 
-    public static boolean available() {return length < MAX_SIZE;}
+        public static void deleteMember() {
+            int memberNo = Prompt.inputInt("번호? ");
+
+            int deletedIndex = indexOf(memberNo);
+            if (deletedIndex == -1) {
+                System.out.println("해당 번호의 회원이 없습니다!");
+                return;
+            }
+
+            for (int i = deletedIndex; i < length - 1; i++) {
+                no[i] = no[i + 1];
+                name[i] = name[i + 1];
+                email[i] = email[i + 1];
+                password[i] = password[i + 1];
+                gender[i] = gender[i + 1];
+            }
+
+            no[length - 1] = 0;
+            name[length - 1] = null;
+            email[length - 1] = null;
+            password[length - 1] = null;
+            gender[length - 1] = (char) 0;
+
+            length--;
+        }
+
+        private static int indexOf(int memberNo) {
+            for (int i = 0; i < length; i++) {
+                if (no[i] == memberNo) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
+        public static boolean available() {
+            return length < MAX_SIZE;
+        }
     }
 }
