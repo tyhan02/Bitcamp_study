@@ -168,9 +168,7 @@
      - 생성자 사용법
      - private/public, setter/getter 사용법
 
-            
-- 
--     📌[의문점] 그렇다면? final은 추상 클래스를 수정할 때 사용할 수 있을까?
+  - 📌[의문점] 그렇다면? final은 추상 클래스를 수정할 때 사용할 수 있을까?
   - https://tyhan02.tistory.com/134
 
 ### 14일(6/12,월)
