@@ -1,48 +1,20 @@
 package bitcamp.myapp;
 
-import bitcamp.dao.DaoBuilder;
-import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.handler.BoardAddListener;
-import bitcamp.myapp.handler.BoardDeleteListener;
-import bitcamp.myapp.handler.BoardDetailListener;
-import bitcamp.myapp.handler.BoardListListener;
-import bitcamp.myapp.handler.BoardUpdateListener;
-import bitcamp.myapp.handler.FooterListener;
-import bitcamp.myapp.handler.HeaderListener;
-import bitcamp.myapp.handler.HelloListener;
-import bitcamp.myapp.handler.MemberAddListener;
-import bitcamp.myapp.handler.MemberDeleteListener;
-import bitcamp.myapp.handler.MemberDetailListener;
-import bitcamp.myapp.handler.MemberListListener;
-import bitcamp.myapp.handler.MemberUpdateListener;
-import bitcamp.util.BreadcrumbPrompt;
-import bitcamp.util.Menu;
-import bitcamp.util.MenuGroup;
+import bitcamp.net.NetProtocol;
+
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
+import java.util.Scanner;
 
 public class ClientApp {
-
-  MemberDao memberDao;
-  BoardDao boardDao;
-  BoardDao readingDao;
-
-  BreadcrumbPrompt prompt = new BreadcrumbPrompt();
-
-  MenuGroup mainMenu = new MenuGroup("메인");
+  String ip;
+  int port;
 
   public ClientApp(String ip, int port) throws Exception {
-
-    DaoBuilder daoBuilder = new DaoBuilder(ip, port);
-
-    this.memberDao = daoBuilder.build("member", MemberDao.class);
-    this.boardDao = daoBuilder.build("board", BoardDao.class);
-    this.readingDao = daoBuilder.build("reading", BoardDao.class);
-
-    prepareMenu();
-  }
-
-  public void close() throws Exception {
-    prompt.close();
+    this.ip=ip;
+    this.port=port;
   }
 
   public static void main(String[] args) throws Exception {
@@ -50,51 +22,35 @@ public class ClientApp {
       System.out.println("실행 예) java ... bitcamp.myapp.ClientApp 서버주소 포트번호");
       return;
     }
-
     ClientApp app = new ClientApp(args[0], Integer.parseInt(args[1]));
     app.execute();
-    app.close();
   }
-
-  static void printTitle() {
-    System.out.println("나의 목록 관리 시스템");
-    System.out.println("----------------------------------");
-  }
-
   public void execute() {
-    printTitle();
-    mainMenu.execute(prompt);
-  }
+      try (Scanner keyscan= new Scanner(System.in);
 
-  private void prepareMenu() {
-    MenuGroup memberMenu = new MenuGroup("회원");
-    memberMenu.add(new Menu("등록", new MemberAddListener(memberDao)));
-    memberMenu.add(new Menu("목록", new MemberListListener(memberDao)));
-    memberMenu.add(new Menu("조회", new MemberDetailListener(memberDao)));
-    memberMenu.add(new Menu("변경", new MemberUpdateListener(memberDao)));
-    memberMenu.add(new Menu("삭제", new MemberDeleteListener(memberDao)));
-    mainMenu.add(memberMenu);
+         Socket socket = new Socket(this.ip, this.port);
+         DataInputStream in = new DataInputStream(socket.getInputStream());
+         DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
 
-    MenuGroup boardMenu = new MenuGroup("게시글");
-    boardMenu.add(new Menu("등록", new BoardAddListener(boardDao)));
-    boardMenu.add(new Menu("목록", new BoardListListener(boardDao)));
-    boardMenu.add(new Menu("조회", new BoardDetailListener(boardDao)));
-    boardMenu.add(new Menu("변경", new BoardUpdateListener(boardDao)));
-    boardMenu.add(new Menu("삭제", new BoardDeleteListener(boardDao)));
-    mainMenu.add(boardMenu);
+        System.out.println(in.readUTF());
 
-    MenuGroup readingMenu = new MenuGroup("독서록");
-    readingMenu.add(new Menu("등록", new BoardAddListener(readingDao)));
-    readingMenu.add(new Menu("목록", new BoardListListener(readingDao)));
-    readingMenu.add(new Menu("조회", new BoardDetailListener(readingDao)));
-    readingMenu.add(new Menu("변경", new BoardUpdateListener(readingDao)));
-    readingMenu.add(new Menu("삭제", new BoardDeleteListener(readingDao)));
-    mainMenu.add(readingMenu);
 
-    Menu helloMenu = new Menu("안녕!");
-    helloMenu.addActionListener(new HeaderListener());
-    helloMenu.addActionListener(new HelloListener());
-    helloMenu.addActionListener(new FooterListener());
-    mainMenu.add(helloMenu);
+        while (true) {
+          String response = in.readUTF();
+          if (response.equals(NetProtocol.RESPONSE_END)) {
+            continue;
+          } else if (response.equals(NetProtocol.PROMPT)) {
+            out.writeUTF(keyscan.nextLine());
+          } else if (response.equals(NetProtocol.NET_END)) {
+            break;
+          }
+          System.out.println(response);
+        }
+
+
+    } catch (Exception e) {
+      System.out.println("서버 통신 오류!");
+      e.printStackTrace();
+    }
   }
 }
