@@ -81,8 +81,8 @@
   - 변수 사용법(com.eomcs.lang.ex04)
   - 배열 사용법(com.eomcs.lang.ex04)
 
-- [의문점] Java에서 final의 기능은 무엇인가??
-- ->https://tyhan02.tistory.com/94
+  - 📌[의문점] Java에서 final의 기능은 무엇인가??
+  - https://tyhan02.tistory.com/94
 
 
 - 프로젝트 실습
@@ -130,11 +130,11 @@
     - 클래스의 public 접근 제어
     - 메서드의 public 접근 제어
 
-- [의문점] 클래스와 추상 클래스의 차이는??
-- ->https://tyhan02.tistory.com/131
+  - 📌[의문점] 클래스와 추상 클래스의 차이는??
+  - https://tyhan02.tistory.com/131
 
-  - 패키지 사용법
-    - import를 이용하여 패키지를 미리 지정하기
+    - 패키지 사용법
+      - import를 이용하여 패키지를 미리 지정하기
 - 프로젝트 실습
   - 8. 메서드 간에 변수 공유하기 : 스태틱 변수 사용법(계속)
     - 리팩토링: 메서드 추가 정의, 상수 선언
@@ -161,12 +161,17 @@
     - 패키지 사용법: import, public 접근 제어
     - GRASP 패턴: Information Expert 패턴 소개
     - GoF의 Design Patters: Factory Method 패턴 소개
-    - 생성자 사용법
-    - private/public, setter/getter 사용법
+    
+  - 📌[의문점]GOF 패턴이란? 
+  - https://tyhan02.tistory.com/157
 
+     - 생성자 사용법
+     - private/public, setter/getter 사용법
 
-- [의문점] 그렇다면? final은 추상 클래스를 수정할 때 사용할 수 있을까?
-- ->https://tyhan02.tistory.com/134
+            
+- 
+-     📌[의문점] 그렇다면? final은 추상 클래스를 수정할 때 사용할 수 있을까?
+  - https://tyhan02.tistory.com/134
 
 ### 14일(6/12,월)
 
@@ -208,8 +213,8 @@
   - 16. GRASP 패턴: Information Expert 적용
   - 17. 인터페이스를 이용한 객체 사용 규칙 정의
 
-- [의문점]인터페이스와 상속의 차이점은 뭘까...?
-- ->https://tyhan02.tistory.com/130
+  - 📌[의문점]인터페이스와 상속의 차이점은 뭘까...?
+  - https://tyhan02.tistory.com/130
 
   - 18. 인스턴스 목록 제어 기능을 별도의 클래스로 캡슐화: 재사용성 높임
 
@@ -259,7 +264,16 @@
 - 프로젝트 실습
   - 24. 제네릭을 사용하여 타입을 파라미터로 다루기
   - 25. Iterator 디자인 패턴을 활용하여 목록 조회 기능을 캡슐화하기
-  - 26. 자바 Collection API 사용하기
+  
+  - 📌[의문점] iterator란???
+  - https://tyhan02.tistory.com/163 
+  - 📌[의문점] iterator와 listIterator의 차이
+  - https://tyhan02.tistory.com/164
+
+  - 26.자바 Collection API 사용하기
+
+  - 📌[의문점] 그렇다면 Collection과 Collections의 차이는?
+  - https://tyhan02.tistory.com/137 
 
 ### 25일(6/27,화)
 
@@ -373,4 +387,101 @@
 - 프로젝트 실습
   - 43. 여러 클라이언트 요청을 동시에 처리하기: Thread 적용
 
+### 37일(7/13,목)
 
+- 자바 프로그래밍
+  - 스레드 프로그래밍(com.eomcs.concurrent.ex1 ~ ex4)
+  - 📌[의문점] 스레드 만드는 방법!!!!
+  - https://tyhan02.tistory.com/173
+- 멀티태스킹의 메커니즘 이해
+  - 프로세스 스케쥴링: Round Robin 방식, Priority + Aging 방식
+  - 컨텍스트 스위칭 개념
+  - 프로세스 복제(fork)방식과 스레드 방식 비교
+- 스레드의 구동원리와 사용법
+  - 스레드의 라이프사이클 이해
+  - Thread 클래스와 Runnable 인터페이스 사용법
+  - 📌[의문점] 스레드에 여러가지 상태가 있다???
+  - https://tyhan02.tistory.com/176
+  
+  - 📌[의문점] thread-safe 컬렉션 클래스들은 무엇이 있을까?
+  - https://tyhan02.tistory.com/161
+- 프로젝트 실습
+
+### 38일(7/14,금)
+
+- 자바 프로그래밍
+  - 스레드 프로그래밍(com.eomcs.concurrent.ex5 ~ ex6)
+- 멀티태스킹의 메커니즘 이해
+  - 임계영역(Critical Region, Critical Section): 세마포어(Semaphore)와 뮤텍스(Mutex)
+- 프로젝트 실습
+  - 44. 스레드 재사용하기 : 스레드풀(thread pool) 구현
+  
+  - 📌[의문점] 스레드를 왜 재사용 해야할까?
+  - https://tyhan02.tistory.com/167 
+
+### 39일(7/17,월)
+
+- 자바 프로그래밍
+  - 스레드 프로그래밍(com.eomcs.concurrent.ex7)
+    - 스레드풀 사용법
+  - 📌[의문점]데몬 스레드는 무엇일까??
+  - https://tyhan02.tistory.com/172
+  - JDBC 프로그래밍(com.eomcs.jdbc)
+    - MySQL 로컬 설치 및 설정
+    - 사용자 추가/삭제
+    - 데이터베이스 추가/삭제
+    - 사용자, 데이터베이스, 테이블 정보 조회
+    - DBMS와 DBMS 클라이언트와 관계
+- 프로젝트 실습
+  - 45. 스레드 재사용하기 : 자바에서 제공하는 스레드풀(thread pool) 사용
+
+### 40일(7/18,화)
+
+- 자바 프로그래밍
+  - JDBC 프로그래밍(com.eomcs.jdbc)
+    - DBMS API와 ODBC API
+    - JDBC API와 JDBC 드라이버
+    - SQL - DDL 사용법
+
+### 41일(7/19,수)
+
+- 자바 프로그래밍
+  - JDBC 프로그래밍(com.eomcs.jdbc)
+    - SQL - DML 사용법
+    - SQL - DQL 사용법
+
+
+### 42일(7/20,목)
+
+- 자바 프로그래밍
+  - JDBC 프로그래밍(com.eomcs.jdbc)
+    - SQL - DQL 사용법: 조인, 서브쿼리, 그룹
+
+### 43일(7/21,금)
+
+- 자바 프로그래밍
+  - 자바 코딩 문제집(001)
+    - 제네릭, 중첩클래스, Map.compute(), BiFunction 인터페이스 사용법
+  - JDBC 프로그래밍(com.eomcs.jdbc)
+    - JDBC API와 Driver 개념
+    - JDBC 드라이버 로딩 원리
+    - select/insert/update/delete 프로그래밍
+- 프로젝트 실습
+  - 46. DBMS 도입하기
+
+### 44일(7/24,월)
+
+- 자바 프로그래밍
+  - JDBC 프로그래밍(com.eomcs.jdbc)
+    - PreparedStatement 사용법
+- 프로젝트 실습
+  - 46. DBMS 도입하기(계속)
+  - 47. SQL 삽입 공격 차단하기
+  - 48. 외부키(Foreign Key) 사용하기
+  - 49. 로그인 적용하기
+
+### 45일(7/25,화)
+
+- 자바 프로그래밍
+- 프로젝트 실습
+  - 50. Application Server 아키텍터로 전환하기
