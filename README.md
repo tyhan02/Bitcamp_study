@@ -81,10 +81,6 @@
   - 변수 사용법(com.eomcs.lang.ex04)
   - 배열 사용법(com.eomcs.lang.ex04)
 
-  - 📌[의문점] Java에서 final의 기능은 무엇인가??
-  - https://tyhan02.tistory.com/94
-
-
 - 프로젝트 실습
   - 4. 키보드로 값을 입력 받기
   - 5. 배열과 반복문을 이용하여 여러 개의 데이터를 입력 받기
@@ -103,11 +99,20 @@
   - 전위/후위 연산자 동작원리
   - 배열 초기화 기법
   - final 사용법
+  
+
+  - 📌[의문점] Java에서 final의 기능은 무엇인가??
+  - https://tyhan02.tistory.com/94
+
+
 - 프로젝트 실습
   - 5. 배열과 반복문을 이용하여 여러 개의 데이터를 입력 받기(계속)
     - final 적용
   - 6. 조건문을 활용하여 실행 흐름을 제어하기
   - 7. 기능 단위로 명령문 묶기 : 메서드 사용법
+
+  - 📌[의문점] 그렇다면? final은 추상 클래스를 수정할 때 사용할 수 있을까?
+  - https://tyhan02.tistory.com/134
  
 ### 9일(6/2,금)
 
@@ -162,14 +167,13 @@
     - GRASP 패턴: Information Expert 패턴 소개
     - GoF의 Design Patters: Factory Method 패턴 소개
     
+
   - 📌[의문점]GOF 패턴이란? 
   - https://tyhan02.tistory.com/157
 
      - 생성자 사용법
      - private/public, setter/getter 사용법
 
-  - 📌[의문점] 그렇다면? final은 추상 클래스를 수정할 때 사용할 수 있을까?
-  - https://tyhan02.tistory.com/134
 
 ### 14일(6/12,월)
 
@@ -211,8 +215,10 @@
   - 16. GRASP 패턴: Information Expert 적용
   - 17. 인터페이스를 이용한 객체 사용 규칙 정의
 
+
   - 📌[의문점]인터페이스와 상속의 차이점은 뭘까...?
   - https://tyhan02.tistory.com/130
+
 
   - 18. 인스턴스 목록 제어 기능을 별도의 클래스로 캡슐화: 재사용성 높임
 
@@ -263,12 +269,16 @@
   - 24. 제네릭을 사용하여 타입을 파라미터로 다루기
   - 25. Iterator 디자인 패턴을 활용하여 목록 조회 기능을 캡슐화하기
   
+
+
   - 📌[의문점] iterator란???
   - https://tyhan02.tistory.com/163 
   - 📌[의문점] iterator와 listIterator의 차이
   - https://tyhan02.tistory.com/164
 
+
   - 26.자바 Collection API 사용하기
+
 
   - 📌[의문점] 그렇다면 Collection과 Collections의 차이는?
   - https://tyhan02.tistory.com/137 
@@ -333,12 +343,6 @@
   - 추상클래스(ex07) 사용법
     - Template Method 패턴(GoF)
   - 인터페이스(ex09, ex10) 사용법
-- 개인 과제 발표
-  - 프로젝트 진행 상황 보고
-    - 김선준, 김현덕, 박동우, 이승혁, 이정훈, 전준호, 손병진, 박진혁, 박승현, 이진석, 김동영, 신현우
-    - 김묘경, 방현석, 최근우, 김선래, 최기현, 김호일, 곽나현, 양소율, 신준식, 정연수, 김종원, 봉세환
-    - 주현욱, 서재운, 한태영, 김성주, 김세연
-    - 오동현(예비군)
 
 ### 31일(7/05,수)
 
@@ -382,13 +386,14 @@
 ### 36일(7/12,수)
 
 - 자바 프로그래밍
-- 프로젝트 실습
   - 43. 여러 클라이언트 요청을 동시에 처리하기: Thread 적용
 
 ### 37일(7/13,목)
 
 - 자바 프로그래밍
   - 스레드 프로그래밍(com.eomcs.concurrent.ex1 ~ ex4)
+
+
   - 📌[의문점] 스레드 만드는 방법!!!!
   - https://tyhan02.tistory.com/173
 - 멀티태스킹의 메커니즘 이해
@@ -398,12 +403,14 @@
 - 스레드의 구동원리와 사용법
   - 스레드의 라이프사이클 이해
   - Thread 클래스와 Runnable 인터페이스 사용법
+
+  
   - 📌[의문점] 스레드에 여러가지 상태가 있다???
   - https://tyhan02.tistory.com/176
   
   - 📌[의문점] thread-safe 컬렉션 클래스들은 무엇이 있을까?
   - https://tyhan02.tistory.com/161
-- 프로젝트 실습
+
 
 ### 38일(7/14,금)
 
