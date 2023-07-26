@@ -490,3 +490,12 @@
 - 자바 프로그래밍
 - 프로젝트 실습
   - 50. Application Server 아키텍터로 전환하기
+
+### 46일(7/26,수)
+
+- 자바 프로그래밍
+- 프로젝트 실습
+  - 51. DB 커넥션 풀을 이용한 Connection 재사용하기
+
+  - 📌[의문점]Auto commit을 false로 설정해야 하는 이유는???
+  - https://tyhan02.tistory.com/182

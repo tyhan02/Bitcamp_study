@@ -20,10 +20,15 @@
       <sourceFolder url="file://$MODULE_DIR$/myapp/app-server/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/myapp/app/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/eomcs/exception/ex1" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/myapp" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/out" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/Test/Test_0607" />
       <excludeFolder url="file://$MODULE_DIR$/lang" />
       <excludeFolder url="file://$MODULE_DIR$/myapp" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/app-01" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/app-client/src/main/java" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/app-common/src/main/java" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/app-server/src/main/java" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
