@@ -225,7 +225,7 @@ public class Money {
             System.out.printf("%s: %.2f%%\n", entry.getKey(), categoryExpenditureRatio);
         }
 
-        System.out.println("\n---------------------------------------");
+        System.out.println("\n------------------------------------");
         System.out.println("월별 지출 비율 (전체)");
         System.out.println("---------------------------------------");
         double expenditureRatio = (double) totalExpense / totalIncome * 100;
