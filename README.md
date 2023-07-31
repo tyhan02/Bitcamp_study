@@ -499,3 +499,18 @@
 
   - 📌[의문점]Auto commit을 false로 설정해야 하는 이유는???
   - https://tyhan02.tistory.com/182
+
+### 47일(7/27,목)
+
+- 자바 프로그래밍
+- 프로젝트 실습
+  - 52. Mybatis SQL-mapper 프레임워크 사용하기
+  
+  - 📌[의문점]GOF의 proxy패턴 사용하는 이유는?
+  - https://tyhan02.tistory.com/183
+
+### 48일(7/28,금)
+
+- 자바 프로그래밍
+- 프로젝트 실습
+  - 52. Mybatis SQL-mapper 프레임워크 사용하기
