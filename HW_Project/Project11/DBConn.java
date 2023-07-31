@@ -13,7 +13,7 @@ public class DBConn {
         if (dbConn == null) {
             try {
                 // MySQL JDBC URL에 맞게 수정
-                String url = "jdbc:mysql://localhost:3306/money";
+                String url = "jdbc:mysql://localhost:3306/project";
                 String user = "root"; // MySQL 계정 사용자명
                 String password = "0000"; // MySQL 계정 비밀번호
 
