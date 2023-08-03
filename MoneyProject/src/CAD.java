@@ -1,4 +1,4 @@
-package Project11;
+package src;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -78,18 +78,12 @@ public class CAD {
             } while (pw);
 
             do {
-                try {
-                    System.out.print("이름:");
-                    str = sc.next();
-                    cad.nameCheck(str);
+                System.out.print("이름:");
+                str = sc.next();
+                cad.nameCheck(str);
 
-                    name = false;
-                    dto.setName(str);
-
-                } catch (AuthenException e) {
-                    System.out.println(e.toString());
-
-                }
+                name = false;
+                dto.setName(str);
 
             } while (name);
 
@@ -259,18 +253,14 @@ public class CAD {
                     System.out.println();
 
                     do {
-                        try {
-                            System.out.println("계좌 간편이름을 작성해주세요");
-                            System.out.print("▶");
-                            str = sc.next();
-                            cad.accNickCheck(str);
+                        System.out.println("계좌 간편이름을 작성해주세요");
+                        System.out.print("▶");
+                        str = sc.next();
+                        cad.accNickCheck(str);
 
-                            nickname = false;
-                            dto.setBankNick(str);
+                        nickname = false;
+                        dto.setBankNick(str);
 
-                        } catch (AuthenException e) {
-                            System.out.println(e.toString());
-                        }
                     } while (nickname);
 
                     result = dao.insertAsset(dto, id, BC);
@@ -315,18 +305,14 @@ public class CAD {
                     System.out.println();
 
                     do {
-                        try {
-                            System.out.println("카드 간편이름을 작성해주세요");
-                            System.out.print("▶");
-                            str = sc.next();
-                            cad.accNickCheck(str);
+                        System.out.println("카드 간편이름을 작성해주세요");
+                        System.out.print("▶");
+                        str = sc.next();
+                        cad.accNickCheck(str);
 
-                            nickname = false;
-                            dto.setCardNick(str);
+                        nickname = false;
+                        dto.setCardNick(str);
 
-                        } catch (AuthenException e) {
-                            System.out.println(e.toString());
-                        }
                     } while (nickname);
 
                     result = dao.insertAsset(dto, id, BC);

@@ -1,4 +1,4 @@
-package Project11;
+package src;
 
 import java.util.regex.Pattern;
 
@@ -53,12 +53,13 @@ public class CADException {
     }
 
     //닉네임 형식
-    public void nameCheck(String name) throws AuthenException {
-
-        boolean check = Pattern.matches("^[ㄱ-ㅎ가-R]*$", name);
-        if (!check)
-            throw new AuthenException("\n※이름은 한글로 입력해주세요");
+    public void nameCheck(String name) {
+        boolean check = Pattern.matches("^[ㄱ-ㅎ가-힣]*$", name);
+        if (!check) {
+            throw new IllegalArgumentException("\n※이름은 한글로 입력해주세요");
+        }
     }
+
 
     //입출금, 예/적금만 입력 가능
     public void accdivCheck(String accdiv) throws AuthenException {
@@ -68,16 +69,17 @@ public class CADException {
     }
 
     //계좌/카드 간편이름 형식
-    public void accNickCheck(String accNick) throws AuthenException {
-
+    public void accNickCheck(String accNick) {
         if (accNick.length() < 1 || accNick.length() > 10) {
-            throw new AuthenException("\n10자 이내의 간편이름만 가능합니다");
+            throw new IllegalArgumentException("\n10자 이내의 간편이름만 가능합니다");
         }
 
-        boolean check = Pattern.matches("^[ㄱ-ㅎ가-R]*$", accNick);
-        if (!check)
-            throw new AuthenException("\n※간편이름은 한글로만 입력가능합니다");
+        boolean check = Pattern.matches("^[ㄱ-ㅎ가-힣]*$", accNick);
+        if (!check) {
+            throw new IllegalArgumentException("\n※간편이름은 한글로만 입력 가능합니다");
+        }
     }
+
 
     // 금액은 숫자만 입력 가능
     public int numberCheck1(String number) throws AuthenException{
