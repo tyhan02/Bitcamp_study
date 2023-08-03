@@ -1,6 +1,4 @@
-package Project11;
-
-
+package src;
 public class Picture {
     public void main1() {
 
