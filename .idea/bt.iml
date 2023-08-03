@@ -22,6 +22,9 @@
       <sourceFolder url="file://$MODULE_DIR$/eomcs/exception/ex1" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/myapp" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/out" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/HW_Project/Project11" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MoneyProject" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/NEW1" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Test/Test_0607" />
       <excludeFolder url="file://$MODULE_DIR$/lang" />
       <excludeFolder url="file://$MODULE_DIR$/myapp" />
