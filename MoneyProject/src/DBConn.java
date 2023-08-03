@@ -1,5 +1,5 @@
-package Project11;
 
+package src;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +20,7 @@ public class DBConn {
                 dbConn = DriverManager.getConnection(url, user, password);
 
             } catch (SQLException e) {
-                System.out.println(e.toString());
+                System.out.println(e);
             }
         }
         return dbConn;
@@ -34,7 +34,7 @@ public class DBConn {
                     dbConn.close();
                 }
             } catch (SQLException e) {
-                System.out.println(e.toString());
+                System.out.println(e);
             }
         }
         dbConn = null;
