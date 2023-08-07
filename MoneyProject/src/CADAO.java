@@ -21,7 +21,7 @@ public class CADAO {
 
         try {
             sql = "insert into member (id,pwd,name,inputdate) ";
-            sql += "values (?,?,?,sysdate)";
+            sql += "values (?,?,?,NOW())";
 
             pstmt = conn.prepareStatement(sql);
 
@@ -86,7 +86,7 @@ public class CADAO {
 
         try {
 
-            sql = "delete member where id=? and pwd=?";
+            sql = "delete from member where id=? and pwd=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, pwd);
@@ -123,7 +123,7 @@ public class CADAO {
 
                 if (result == 1) {
                     System.out.println();
-                    System.out.println("존재하는 별칭입니다. 다시 입력해주세요.");
+                    System.out.println("이미 존재하는 별칭입니다. 다시 입력해주세요.");
                     System.out.println();
                 } else{
                     sql = "insert into account(id,accdiv,bank,accname,accno,accamount,nickname) ";
@@ -196,11 +196,10 @@ public class CADAO {
 
         try {
 
-            if(BC==1)
-                sql = "delete account where id=? and bank=? and accno=?";
-            if(BC==2)
-                sql = "delete card where id=? and card=? and cardno=?";
-
+            if (BC == 1)
+                sql = "delete from account where id=? and bank=? and accno=?";
+            if (BC == 2)
+                sql = "delete from card where id=? and card=? and cardno=?";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, id);
@@ -228,9 +227,9 @@ public class CADAO {
 
         try {
 
-            if(BC==1){
+            if (BC == 1) {
                 sql = "select accdiv, bank, accname, accno, accamount, nickname ";
-                sql+= "from account where id=?";
+                sql += "from account where id=?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, id);
 
@@ -249,9 +248,9 @@ public class CADAO {
                 }
             }
 
-            if(BC==2){
+            if (BC == 2) {
                 sql = "select card, cardname, cardno, nickname, cardamount ";
-                sql+= "from card where id=?";
+                sql += "from card where id=?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, id);
 
@@ -292,14 +291,14 @@ public class CADAO {
         try {
 
             //입출금내역 전체조회
-            sql = "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
-                    + "from cardwithdraw where id=? and to_char(cadate,'yyyy-mm-dd')=?";//카드이용내역
+            sql = "select id, DATE_FORMAT(cadate, '%Y-%m-%d'), -(amount) as accamount, category, nickname "
+                    + "from cardwithdraw where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')=?";
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),amount,category,nickname "
-                    + "from accountdeposit where id=? and to_char(cadate,'yyyy-mm-dd')=?";//계좌입금내역
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d'), amount as accamount, category, nickname "
+                    + "from accountdeposit where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')=?";
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
-                    + "from accountwithdraw where id=? and to_char(cadate,'yyyy-mm-dd')=?";//계좌출금내역
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d'), -(amount) as accamount, category, nickname "
+                    + "from accountwithdraw where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, date);
@@ -394,14 +393,14 @@ public class CADAO {
         try {
 
             //입출금내역 전체조회
-            sql = "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
-                    + "from cardwithdraw where id=? and to_char(cadate,'yyyy-mm-dd')>=? and to_char(cadate,'yyyy-mm-dd')<=?";//카드이용내역
+            sql = "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, -(amount) as accamount, category, nickname "
+                    + "from cardwithdraw where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')>=? and DATE_FORMAT(cadate, '%Y-%m-%d')<=?";
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),amount,category,nickname "
-                    + "from accountdeposit where id=? and to_char(cadate,'yyyy-mm-dd')>=? and to_char(cadate,'yyyy-mm-dd')<=?";//계좌입금내역
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, amount as accamount, category, nickname "
+                    + "from accountdeposit where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')>=? and DATE_FORMAT(cadate, '%Y-%m-%d')<=?";
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
-                    + "from accountwithdraw where id=? and to_char(cadate,'yyyy-mm-dd')>=? and to_char(cadate,'yyyy-mm-dd')<=?";//계좌출금내역
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, -(amount) as accamount, category, nickname "
+                    + "from accountwithdraw where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')>=? and DATE_FORMAT(cadate, '%Y-%m-%d')<=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, date1); //fromdate
@@ -489,7 +488,7 @@ public class CADAO {
         }
 
     }
-
+//---------------------------------------------------------------
     //4.3 가계부조회 - 월별
     public void selectmonth(String id, String year, String month) {
 
@@ -504,14 +503,14 @@ public class CADAO {
         try {
 
             //입출금내역 전체조회
-            sql = "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
-                    + "from cardwithdraw where id=? and to_char(cadate,'yyyy')=? and to_char(cadate,'mm') =? ";//카드이용내역
+            sql = "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, -(amount) as accamount, category, nickname "
+                    + "from cardwithdraw where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')>=? and DATE_FORMAT(cadate, '%Y-%m-%d')<=?";
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),amount,category,nickname "
-                    + "from accountdeposit where id=? and to_char(cadate,'yyyy')=? and to_char(cadate,'mm') =? ";//계좌입금내역
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, amount as accamount, category, nickname "
+                    + "from accountdeposit where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')>=? and DATE_FORMAT(cadate, '%Y-%m-%d')<=?";
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
-                    + "from accountwithdraw where id=? and to_char(cadate,'yyyy')=? and to_char(cadate,'mm') =? ";//계좌출금내역
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, -(amount) as accamount, category, nickname "
+                    + "from accountwithdraw where id=? and DATE_FORMAT(cadate, '%Y-%m-%d')>=? and DATE_FORMAT(cadate, '%Y-%m-%d')<=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, year);
@@ -596,7 +595,7 @@ public class CADAO {
             System.out.println("----------------------------------------\n");
         }
     }
-
+//============================
     //4.4 가계부조회 - 카테고리별
     public void selectcategory(String id, String category) {
 
@@ -610,15 +609,16 @@ public class CADAO {
 
         try {
 
-            //입출금내역 전체조회
-            sql = "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
+            // 입출금내역 전체조회
+            sql = "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, -(amount) as accamount, category, nickname "
                     + "from cardwithdraw where id=? and category like ? ";//카드이용내역
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),amount,category,nickname "
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, amount as accamount, category, nickname "
                     + "from accountdeposit where id=? and category like ? ";//계좌입금내역
             sql += " union ";
-            sql += "select id,to_char(cadate,'yyyy-mm-dd'),-(amount),category,nickname "
+            sql += "select id, DATE_FORMAT(cadate, '%Y-%m-%d') as cadate, -(amount) as accamount, category, nickname "
                     + "from accountwithdraw where id=? and category like ? ";//계좌출금내역
+
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, category+"%");
@@ -679,11 +679,10 @@ public class CADAO {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-
         if(lists != null){
-            System.out.println("---------------------------------------------------");
+            System.out.println("-------------------------------------------------");
             System.out.println("  아이디   결제일   계좌별칭    금  액    카테고리");
-            System.out.println("---------------------------------------------------");
+            System.out.println("-------------------------------------------------");
             Iterator<CADTO> it = lists.iterator();
             while (it.hasNext()) {
                 CADTO dto = it.next();
@@ -719,8 +718,10 @@ public class CADAO {
 
         try {
             //입금총액 구하기
-            sql = "select to_char(cadate,'dd'),sum(amount) from accountdeposit "
-                    + "where id=? and to_char(cadate,'yyyy')=? and to_char(cadate,'mm') =? group by to_char(cadate,'dd') ";
+            // 입금총액 구하기
+            sql = "select DATE_FORMAT(cadate,'%d'), sum(amount) from accountdeposit "
+                    + "where id=? and DATE_FORMAT(cadate,'%Y')=? and DATE_FORMAT(cadate,'%m')=? group by DATE_FORMAT(cadate,'%d') ";
+
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, year);
