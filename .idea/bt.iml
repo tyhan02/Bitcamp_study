@@ -32,6 +32,7 @@
       <excludeFolder url="file://$MODULE_DIR$/myapp/app-client/src/main/java" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/app-common/src/main/java" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/app-server/src/main/java" />
+      <excludeFolder url="file://$MODULE_DIR$/web" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
