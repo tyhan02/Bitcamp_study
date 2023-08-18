@@ -20,12 +20,19 @@ dependencies {
 
     // Mybatis 라이브러리
     implementation 'org.mybatis:mybatis:3.5.13'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.79'
 
-    // Servlet API 
+    // Servlet API
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+
+//    // multipart/form-data 처리 라이브러리
+//    implementation 'commons-fileupload:commons-fileupload:1.5'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     implementation 'com.google.guava:guava:31.1-jre'
+
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.530'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
 }
 
 java {
@@ -47,9 +54,6 @@ tasks.withType(JavaCompile) {
 eclipse {
     project {
         name = "myapp-server"
-    }
-    project {
-        name = "app-server"
     }
     jdt {
         sourceCompatibility = 17
