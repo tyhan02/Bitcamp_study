@@ -14,8 +14,8 @@ public class BoardFormServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+          throws ServletException, IOException {
 
     int category = Integer.parseInt(request.getParameter("category"));
 
@@ -29,9 +29,10 @@ public class BoardFormServlet extends HttpServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시글</h1>");
-    out.println("<form action='/board/add' method='post'>");
+    out.println("<form action='/board/add' method='post' enctype='multipart/form-data'>");
     out.println("제목 <input type='text' name='title'><br>");
     out.println("내용 <textarea name='content'></textarea><br>");
+    out.println("파일 <input type='file' name='files' multiple><br>");
     out.printf("<input type='hidden' name='category' value='%d'>\n", category);
     out.println("<button>등록</button>");
     out.println("</form>");

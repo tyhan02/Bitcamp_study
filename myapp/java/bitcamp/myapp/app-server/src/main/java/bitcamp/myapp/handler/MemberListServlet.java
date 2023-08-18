@@ -16,8 +16,8 @@ public class MemberListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+          throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -40,10 +40,12 @@ public class MemberListServlet extends HttpServlet {
     List<Member> list = InitServlet.memberDao.findAll();
     for (Member m : list) {
       out.printf("<tr>"
-          + " <td>%d</td>"
-          + " <td><a href='/member/detail?no=%d'>%s</a></td>"
-          + " <td>%s</td></tr>\n",
-          m.getNo(), m.getNo(), m.getName(), m.getEmail());
+                      + " <td>%d</td>"
+                      + " <td>"
+                      + "<img src='http://xxhebecaeaxt19010755.cdn.ntruss.com/member/%s?3c4141e8-d2c6-481a-b8c9-20a8f45408cf?type=f&w=30&h=40&faceopt=true&ttype=jpg'>"
+                      + "<a href='/member/detail?no=%d'>%s</a></td>"
+                      + " <td>%s</td></tr>\n",
+              m.getNo(), m.getPhoto(), m.getNo(), m.getName(), m.getEmail());
     }
 
     out.println("</tbody>");
