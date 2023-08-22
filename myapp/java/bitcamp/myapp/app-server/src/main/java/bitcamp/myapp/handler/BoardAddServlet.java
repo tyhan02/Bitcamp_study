@@ -42,7 +42,7 @@ public class BoardAddServlet extends HttpServlet {
         //        System.out.println(part.getName());
         if (part.getName().equals("files") && part.getSize() > 0) {
           String uploadFileUrl = InitServlet.ncpObjectStorageService.uploadFile(
-                  "bitcamp-nc7-bucket-21", "board/", part);
+                  "bitcamp-nc7-bucket-118", "board/", part);
           AttachedFile attachedFile = new AttachedFile();
           attachedFile.setFilePath(uploadFileUrl);
           attachedFiles.add(attachedFile);
@@ -73,7 +73,8 @@ public class BoardAddServlet extends HttpServlet {
         }
 
         InitServlet.sqlSessionFactory.openSession(false).commit();
-        out.println("<p>등록 성공입니다!</p>");
+        request.getRequestDispatcher("list?category=" + board.getCategory());
+        return;
 
       } catch (Exception e) {
         InitServlet.sqlSessionFactory.openSession(false).rollback();
