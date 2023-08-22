@@ -33,6 +33,9 @@ public class BoardDetailServlet extends HttpServlet {
     out.println("<title>게시글</title>");
     out.println("</head>");
     out.println("<body>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<h1>게시글</h1>");
 
     if (board == null) {
@@ -54,7 +57,7 @@ public class BoardDetailServlet extends HttpServlet {
       out.println("<tr><th>첨부파일</th><td>");
 
       for (AttachedFile file : board.getAttachedFiles()) {
-        out.printf("<a href='https://kr.object.ncloudstorage.com/bitcamp-nc7-bucket-21/board/%s'>%1$s</a>"
+        out.printf("<a href='https://kr.object.ncloudstorage.com/bitcamp-nc7-bucket-118/board/%s'>%1$s</a>"
                 + " [<a href='/board/file/delete?category=%d&no=%d'>삭제</a>]"
                 + "<br>\n", file.getFilePath(), category, file.getNo());
       }
@@ -82,6 +85,8 @@ public class BoardDetailServlet extends HttpServlet {
         InitServlet.sqlSessionFactory.openSession(false).rollback();
       }
     }
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");
