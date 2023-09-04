@@ -1,54 +1,41 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.service.BoardService;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-@WebServlet("/board/delete")
-public class BoardDeleteController extends HttpServlet {
+@Controller("/board/delete")
+public class BoardDeleteController implements PageController {
 
-  private static final long serialVersionUID = 1L;
+  @Autowired
+  BoardService boardService;
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser == null) {
-      request.setAttribute("viewUrl", "redirect:../auth/login");
-      return;
+      return "redirect:../auth/login";
     }
 
-    BoardDao boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) this.getServletContext().getAttribute("sqlSessionFactory");
-
     try {
-      Board b = new Board();
-      b.setNo(Integer.parseInt(request.getParameter("no")));
-      b.setWriter(loginUser);
-      b.setCategory(Integer.parseInt(request.getParameter("category")));
+      Board b = boardService.get(Integer.parseInt(request.getParameter("no")));
 
-      boardDao.deleteFiles(b.getNo());
-
-      if (boardDao.delete(b) == 0) {
+      if (b == null || b.getWriter().getNo() != loginUser.getNo()) {
         throw new Exception("해당 번호의 게시글이 없거나 삭제 권한이 없습니다.");
       } else {
-        sqlSessionFactory.openSession(false).commit();
-        request.setAttribute("viewUrl", "redirect:list?category=" + request.getParameter("category"));
+        boardService.delete(b.getNo());
+        return "redirect:list?category=" + request.getParameter("category");
       }
 
     } catch (Exception e) {
-      sqlSessionFactory.openSession(false).rollback();
       request.setAttribute("refresh", "2;url=list?category=" + request.getParameter("category"));
-      request.setAttribute("exception", e);
+      throw e;
     }
   }
 }
