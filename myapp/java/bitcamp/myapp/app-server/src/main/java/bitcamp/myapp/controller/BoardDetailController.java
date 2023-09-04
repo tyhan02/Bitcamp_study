@@ -1,45 +1,35 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.service.BoardService;
 import bitcamp.myapp.vo.Board;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-@WebServlet("/board/detail")
-public class BoardDetailController extends HttpServlet {
+@Controller("/board/detail")
+public class BoardDetailController implements PageController {
 
-  private static final long serialVersionUID = 1L;
+  @Autowired
+  BoardService boardService;
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
-
-    BoardDao boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) this.getServletContext().getAttribute("sqlSessionFactory");
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     try {
-      int category = Integer.parseInt(request.getParameter("category"));
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Board board = boardDao.findBy(category, no);
+      Board board = boardService.get(no);
       if (board != null) {
-        board.setViewCount(board.getViewCount() + 1);
-        boardDao.updateCount(board);
-        sqlSessionFactory.openSession(false).commit();
+        boardService.increaseViewCount(no);
         request.setAttribute("board", board);
       }
-      request.setAttribute("viewUrl", "/WEB-INF/jsp/board/detail.jsp");
+      return "/WEB-INF/jsp/board/detail.jsp";
 
     } catch (Exception e) {
-      sqlSessionFactory.openSession(false).rollback();
       request.setAttribute("refresh", "5;url=/board/list?category=" + request.getParameter("category"));
-      request.setAttribute("exception", e);
+      throw e;
     }
   }
 }
