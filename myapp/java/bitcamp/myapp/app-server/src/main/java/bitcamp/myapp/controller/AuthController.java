@@ -42,7 +42,7 @@ public class AuthController {
     Member loginUser = memberService.get(email, password);
     if (loginUser == null) {
       model.put("refresh", "2;url=form");
-      throw new Exception("회원 정보가 일치하지 않습니다.");
+
     }
 
     session.setAttribute("loginUser", loginUser);
