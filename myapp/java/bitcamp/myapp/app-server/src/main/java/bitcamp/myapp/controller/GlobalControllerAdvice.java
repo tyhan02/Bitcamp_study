@@ -20,17 +20,3 @@ public class GlobalControllerAdvice {
     return mv;
   }
 
-  @InitBinder
-  public void initBinder(WebDataBinder binder) {
-    binder.registerCustomEditor(java.util.Date.class, new PropertyEditorSupport() {
-      @Override
-      public void setAsText(String text) throws IllegalArgumentException {
-        try {
-          setValue(java.sql.Date.valueOf(text));
-        } catch (Exception e) {
-          throw new IllegalArgumentException(e);
-        }
-      }
-    });
-  }
-}
